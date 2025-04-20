@@ -163,7 +163,7 @@ export default function Page() {
                     With expertise in both frontend and backend technologies, I enjoy creating seamless user experiences while ensuring robust architecture under the hood. My experience with containerization and cloud platforms allows me to implement efficient CI/CD workflows.
                   </p>
                   <p>
-                    When I&apos;m not coding, you'll find me diving into new tech stacks, working on hackathon projects, or sharing insights through writing and community engagement.
+                    When I&apos;m not coding, you&apos;ll find me diving into new tech stacks, working on hackathon projects, or sharing insights through writing and community engagement.
                   </p>
                 </div>
               </div>
