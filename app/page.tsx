@@ -155,12 +155,9 @@ export default function Page() {
                     />
                   </div>
                 </div>
-                <div className="w-full md:w-2/3 space-y-4">
-                  <p className="text-lg">
-                    Hello! I&apos;m Aditya, a passionate Full Stack Developer and DevOps Engineer with a keen interest in building scalable applications and optimizing deployment pipelines.
-                  </p>
+                <div className="w-full md:w-2/3 space-y-4 text-lg">
                   <p>
-                    With expertise in both frontend and backend technologies, I enjoy creating seamless user experiences while ensuring robust architecture under the hood. My experience with containerization and cloud platforms allows me to implement efficient CI/CD workflows.
+                    Hello! I&apos;m Aditya, a passionate Full Stack Developer and DevOps Engineer with a keen interest in building scalable applications and optimizing deployment pipelines.
                   </p>
                   <p>
                     When I&apos;m not coding, you&apos;ll find me diving into new tech stacks, working on hackathon projects, or sharing insights through writing and community engagement.
