@@ -1,42 +1,98 @@
+"use client"; 
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, Twitter, Menu } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 import ProjectCard from "./components/project-card"
 import TechStack from "./components/tech-stack"
 import { ThemeToggle } from "@/components/theme-toggle"
 import CopyEmailButton from "./components/email"
+import { useState } from "react"
 
 export default function Page() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-background">
-      <div className="w-full max-w-6xl mx-auto"> {/* New wrapper to center the page */}
+      <div className="w-full max-w-6xl mx-auto px-4 md:px-6">
         <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-          <div className="flex h-14 items-center px-4 md:px-6">
-            <div className="mr-4 hidden md:flex">
-              <Link className="mr-6 flex items-center space-x-2" href="/">
-                <span className="hidden font-bold sm:inline-block">Aditya Hota</span>
+          <div className="flex h-14 items-center justify-between">
+            {/* Logo/Name - visible on all screens */}
+            <Link className="flex items-center space-x-2" href="/">
+              <span className="font-bold">Aditya Hota</span>
+            </Link>
+            
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+              <Link href="#about-me" className="transition-colors hover:text-foreground/80">
+                About Me
               </Link>
-              <nav className="flex items-center space-x-6 text-sm font-medium">
-                <Link href="#about" className="transition-colors hover:text-foreground/80">
-                  About
+              <Link href="#projects" className="transition-colors hover:text-foreground/80">
+                Projects
+              </Link>
+              <Link href="#contact" className="transition-colors hover:text-foreground/80">
+                Contact
+              </Link>
+            </nav>
+            
+            {/* Mobile Menu Button */}
+            <div className="flex items-center space-x-4">
+              {/* Theme toggle - visible on all screens */}
+              <ThemeToggle />
+              
+              {/* Resume button with PDF link */}
+              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline">
+                  Resume
+                </Button>
+              </Link>
+              
+              {/* Mobile menu toggle */}
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="md:hidden"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle Menu</span>
+              </Button>
+            </div>
+          </div>
+          
+          {/* Mobile Navigation */}
+          {mobileMenuOpen && (
+            <div className="md:hidden py-2 bg-background border-t">
+              <nav className="flex flex-col space-y-3 text-sm font-medium">
+                <Link 
+                  href="#about-me" 
+                  className="transition-colors hover:text-foreground/80"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  About Me
                 </Link>
-                <Link href="#projects" className="transition-colors hover:text-foreground/80">
+                <Link 
+                  href="#projects" 
+                  className="transition-colors hover:text-foreground/80"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Projects
                 </Link>
-                <Link href="#contact" className="transition-colors hover:text-foreground/80">
+                <Link 
+                  href="#contact" 
+                  className="transition-colors hover:text-foreground/80"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
                   Contact
                 </Link>
-                <ThemeToggle />
               </nav>
             </div>
-            <Button variant="outline" className="ml-auto">
-              Resume
-            </Button>
-          </div>
+          )}
         </header>
 
-        <main className="px-4 md:px-6">
-          <section id="about" className="py-12 md:py-24 lg:py-32">
+        <main>
+          {/* Hero Section */}
+          <section className="py-12 md:py-24">
             <div className="text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
@@ -76,12 +132,46 @@ export default function Page() {
                     <span className="sr-only">Email</span>
                   </Button>
                 </Link>
-
               </div>
             </div>
           </section>
 
-          <section id="projects" className="py-12 md:py-24 lg:py-32">
+          {/* About Me Section */}
+          <section id="about-me" className="py-12 md:py-24">
+            <div className="mx-auto max-w-4xl">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">
+                About Me
+              </h2>
+              <div className="flex flex-col md:flex-row gap-8 items-center">
+                <div className="w-full max-w-[250px] md:w-1/3 mx-auto md:mx-0">
+                  {/* Using Next.js Image component with responsive styling */}
+                  <div className="relative w-full pb-[100%] overflow-hidden rounded-full border-4 border-gray-200 dark:border-gray-800 bg-white">
+                    <Image 
+                      src="/pfp.svg"
+                      alt="Aditya Hota" 
+                      fill
+                      className="object-cover"
+                      style={{ filter: 'none' }} // Prevent theme/filter affecting image
+                    />
+                  </div>
+                </div>
+                <div className="w-full md:w-2/3 space-y-4">
+                  <p className="text-lg">
+                    Hello! I&apos;m Aditya, a passionate Full Stack Developer and DevOps Engineer with a keen interest in building scalable applications and optimizing deployment pipelines.
+                  </p>
+                  <p>
+                    With expertise in both frontend and backend technologies, I enjoy creating seamless user experiences while ensuring robust architecture under the hood. My experience with containerization and cloud platforms allows me to implement efficient CI/CD workflows.
+                  </p>
+                  <p>
+                    When I&apos;m not coding, you'll find me diving into new tech stacks, working on hackathon projects, or sharing insights through writing and community engagement.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Projects Section */}
+          <section id="projects" className="py-12 md:py-24">
             <div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
                 Projects
@@ -110,14 +200,13 @@ export default function Page() {
                     "Google Cloud (GKE)",
                     "NGINX"
                   ]}
-
                 />
-
               </div>
             </div>
           </section>
 
-          <section className="py-12 md:py-24 lg:py-32">
+          {/* Tech Stack Section */}
+          <section className="py-12 md:py-24">
             <div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
                 Tech Stack
@@ -126,12 +215,13 @@ export default function Page() {
             </div>
           </section>
 
-          <section id="contact" className="py-12 md:py-24 lg:py-32">
+          {/* Contact Section */}
+          <section id="contact" className="py-12 md:py-24">
             <div className="mx-auto max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
                 Get in Touch
               </h2>
-              <div className="flex items-center mt-4">
+              <div className="flex items-center justify-center mt-4 px-4">
                 <CopyEmailButton />
               </div>
             </div>
@@ -139,14 +229,14 @@ export default function Page() {
         </main>
 
         <footer className="border-t">
-            <div className="border-t border-gray-100 py-6 text-center">
-                <p className="text-sm text-gray-600">
-                    &copy; {new Date().getFullYear()} InkWell. All rights reserved.
-                </p>
-                <p className="mt-1 text-sm text-gray-500">
-                    Built with passion and too much coffee ☕
-                </p>
-            </div>
+          <div className="border-t border-gray-100 py-6 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              &copy; {new Date().getFullYear()} Aditya Hota. All rights reserved.
+            </p>
+            <p className="mt-1 text-sm text-gray-500 dark:text-gray-500">
+              Built with passion and too much coffee ☕
+            </p>
+          </div>
         </footer>
       </div>
     </div>
