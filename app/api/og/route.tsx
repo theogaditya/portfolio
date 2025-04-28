@@ -5,11 +5,6 @@ export const runtime = 'edge';
  
 export async function GET() {
   try {
-    // Font
-    const interSemiBold = fetch(
-      new URL('../../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
-    ).then((res) => res.arrayBuffer());
-    
     return new ImageResponse(
       (
         <div
@@ -22,7 +17,7 @@ export async function GET() {
             justifyContent: 'center',
             backgroundColor: '#1E293B', // Dark blue background
             padding: 40,
-            fontFamily: '"Inter"',
+            fontFamily: 'sans-serif', // Use system fonts instead
           }}
         >
           <div
@@ -33,7 +28,7 @@ export async function GET() {
               marginBottom: 40,
             }}
           >
-            {/* You can add a logo or profile image here */}
+            {/* Circle with initials */}
             <div
               style={{
                 width: 150,
@@ -120,18 +115,11 @@ export async function GET() {
       {
         width: 1200,
         height: 630,
-        fonts: [
-          {
-            name: 'Inter',
-            data: await interSemiBold,
-            style: 'normal',
-            weight: 600,
-          },
-        ],
       },
     );
-  } catch (e:any) {
-    console.log(`${e.message}`);
+  } catch (error: unknown) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    console.log(errorMessage);
     return new Response(`Failed to generate the image`, {
       status: 500,
     });
