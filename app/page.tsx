@@ -41,7 +41,7 @@ export default function Page() {
               <ThemeToggle />
               
               {/* Resume button with PDF link */}
-              <Link href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/resume.pdf" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline">
                   Resume
                 </Button>
@@ -126,7 +126,7 @@ export default function Page() {
                     <span className="sr-only">Twitter</span>
                   </Button>
                 </Link>
-                <Link href="mailto:adityahota99@gmail.com">
+                <Link href="mailto:connect@adityahota.online">
                   <Button variant="outline" size="icon">
                     <Mail className="h-4 w-4" />
                     <span className="sr-only">Email</span>
@@ -147,7 +147,7 @@ export default function Page() {
                   {/* Using Next.js Image component with responsive styling */}
                   <div className="relative w-full pb-[100%] overflow-hidden rounded-full border-4 border-gray-200 dark:border-gray-800 bg-white">
                     <Image 
-                      src="/pfp.svg"
+                      src="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/pfp.svg"
                       alt="Aditya Hota" 
                       fill
                       className="object-cover"
@@ -175,18 +175,18 @@ export default function Page() {
               </h2>
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <ProjectCard
-                  title="Inkwell: A New Age Blogging Platform"
-                  description="A full-stack blog platform with real-time notifications, authentication, and content management"
+                  title="Inkwell: A dev first blogging platform"
+                  description="A full-stack blog platform with real-time notifications, authentication, and content management. With User-friendly code editor and a beautiful UI."
                   image="/inkwell.svg?height=400&width=600"
                   githubLink="https://github.com/Bytewise-Consulting-Product/inkwell"
                   liveDemoLink="https://inkwell.adityahota.online/"
                   tags={[
-                    "React 19",
-                    "Vite",
+                    "React",
                     "Tailwind CSS",
                     "Clerk",
-                    "Express.js",
-                    "Prisma ORM",
+                    "Express",
+                    "Prisma",
+                    "PostgreSQL",
                     "Redis",
                     "WebSocket",
                     "Pub/Sub",
@@ -194,8 +194,33 @@ export default function Page() {
                     "Swagger UI",
                     "Docker",
                     "Kubernetes",
-                    "Google Cloud (GKE)",
+                    "GCP (GKE)",
                     "NGINX"
+                  ]}
+                />
+                <ProjectCard
+                  title="SwarajDesk: A Public Grievance Portal"
+                  description="
+                  Citizens can file complaints with media attachments, auto-classified sub-categories (via Vertex AI), and track status in 
+                  real-time. Community features include upvoting/resolving grievances in a social feed (For You, Trending, Recent), with 
+                  multilingual UI powered by Google Translate API.
+                  "
+                  image="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/swarajpfp.png"
+                  githubLink="https://github.com/theogaditya/gms"
+                  liveDemoLink="https://www.swarajdesk.co.in/"
+                  tags={[
+                    "Next.js",
+                    "Tailwind CSS",
+                    "Express",
+                    "Prisma ORM",
+                    "PostgreSQL",
+                    "Redis",
+                    "WebSocket",
+                    "Nodemailer",
+                    "R2 Storage",
+                    "Python",
+                    "Docker",
+                    "GCP (Cloud Run & Vertex AI)",
                   ]}
                 />
               </div>

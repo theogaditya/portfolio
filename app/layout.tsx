@@ -33,28 +33,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://adityahota.online',
   },
-  openGraph: {
-    type: 'website',
-    url: 'https://adityahota.online',
-    title: 'Aditya Hota | Full Stack Developer & DevOps Engineer',
-    description: 'Portfolio of Aditya Hota - Full Stack Developer and DevOps Engineer specializing in React, Node.js, Docker, and Kubernetes.',
-    images: [
-      {
-        // For static image:
-        url: '/og-image.jpg', 
-        width: 1200,
-        height: 630,
-        alt: 'Aditya Hota - Portfolio',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Aditya Hota | Full Stack Developer & DevOps Engineer',
-    description: 'Portfolio of Aditya Hota - Full Stack Developer and DevOps Engineer',
-    images: ['/og-image.jpg'], 
-    creator: '@adityahota01',
-  },
   authors: [{ name: "Aditya Hota" }],
   creator: "Aditya Hota",
   publisher: "Aditya Hota",
@@ -112,7 +90,7 @@ export default function RootLayout({
         
       </head>
       <body className={cn("min-h-screen bg-background font-sans antialiased", inter.className)}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           {children}
         </ThemeProvider>
       </body>
