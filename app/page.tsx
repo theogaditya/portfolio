@@ -8,8 +8,6 @@ import TechStack from "./components/tech-stack"
 import { ThemeToggle } from "@/components/theme-toggle"
 import CopyEmailButton from "./components/email"
 import { useState } from "react"
-import { motion,useScroll, useSpring  } from 'framer-motion';
-import pfp from "../public/pfp.png"
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
