@@ -8,9 +8,19 @@ import TechStack from "./components/tech-stack"
 import { ThemeToggle } from "@/components/theme-toggle"
 import CopyEmailButton from "./components/email"
 import { useState } from "react"
+import { motion,useScroll, useSpring  } from 'framer-motion';
+import pfp from "../public/pfp.png"
 
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+    setMobileMenuOpen(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-background">
@@ -24,13 +34,24 @@ export default function Page() {
             
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-              <Link href="#about-me" className="transition-colors hover:text-foreground/80">
+              <Link href="#about-me" onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('about-me');}} 
+                className="transition-colors hover:text-foreground/80">
                 About Me
               </Link>
-              <Link href="#projects" className="transition-colors hover:text-foreground/80">
+              <Link href="#projects" onClick={(e)=>{
+                e.preventDefault();
+                scrollToSection('projects');
+              }} className="transition-colors hover:text-foreground/80">
                 Projects
               </Link>
-              <Link href="#contact" className="transition-colors hover:text-foreground/80">
+              <Link href="#contact" onClick={
+                (e) => {
+                  e.preventDefault();
+                  scrollToSection('contact');
+                }
+              } className="transition-colors hover:text-foreground/80">
                 Contact
               </Link>
             </nav>
@@ -41,7 +62,7 @@ export default function Page() {
               <ThemeToggle />
               
               {/* Resume button with PDF link */}
-              <Link href="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/Resume-jul30.pdf" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline">
                   Resume
                 </Button>
@@ -135,19 +156,25 @@ export default function Page() {
               </div>
             </div>
           </section>
-
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
+          
           {/* About Me Section */}
           <section id="about-me" className="py-12 md:py-24">
             <div className="mx-auto max-w-4xl">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">
                 About Me
               </h2>
+              
               <div className="flex flex-col md:flex-row gap-8 items-center">
                 <div className="w-full max-w-[250px] md:w-1/3 mx-auto md:mx-0">
                   {/* Using Next.js Image component with responsive styling */}
                   <div className="relative w-full pb-[100%] overflow-hidden rounded-full border-4 border-gray-200 dark:border-gray-800 bg-white">
                     <Image 
-                      src="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/pfp.svg"
+                      src="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/pfp.png"
                       alt="Aditya Hota" 
                       fill
                       className="object-cover"
@@ -166,6 +193,10 @@ export default function Page() {
               </div>
             </div>
           </section>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
 
           {/* Projects Section */}
           <section id="projects" className="py-12 md:py-24">
@@ -177,7 +208,7 @@ export default function Page() {
                 <ProjectCard
                   title="Inkwell: A dev first blogging platform"
                   description="A full-stack blog platform with real-time notifications, authentication, and content management. With User-friendly code editor and a beautiful UI."
-                  image="/inkwell.svg?height=400&width=600"
+                  image="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/inkwell.svg"
                   githubLink="https://github.com/Bytewise-Consulting-Product/inkwell"
                   liveDemoLink="https://inkwell.adityahota.online/"
                   tags={[
@@ -219,6 +250,26 @@ export default function Page() {
                     "Nodemailer",
                     "R2 Storage",
                     "Python",
+                    "Docker",
+                    "GCP (Cloud Run & Vertex AI)",
+                  ]}
+                />
+                <ProjectCard
+                  title="SwarajDesk: Admin Portal"
+                  description="Providing a structured a four-tier admin escalation hierarchy with distinct dashboards and granular control."
+                  image="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/Screenshot%20From%202025-07-31%2012-56-13.png"
+                  githubLink="https://github.com/theogaditya/gms"
+                  liveDemoLink="https://admin.swarajdesk.co.in/"
+                  tags={[
+                    "Next.js",
+                    "Tailwind CSS",
+                    "Express",
+                    "Batoi Insight",
+                    "Prisma ORM",
+                    "PostgreSQL",
+                    "Redis",
+                    "WebSocket",
+                    "R2 Storage",
                     "Docker",
                     "GCP (Cloud Run & Vertex AI)",
                   ]}

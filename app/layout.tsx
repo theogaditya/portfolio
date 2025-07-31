@@ -10,6 +10,10 @@ const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Aditya Hota | Full Stack Developer & DevOps Engineer",
+icons: {
+  icon: "/favicon.ico",
+  shortcut: "/favicon.ico",
+},
   description: "Portfolio of Aditya Hota - Full Stack Developer and DevOps Engineer specializing in React, Node.js, Docker, and Kubernetes. Explore my projects and technical expertise.",
   keywords: [
     "Aditya Hota",
