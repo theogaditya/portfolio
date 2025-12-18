@@ -1,4 +1,14 @@
 "use client"; 
+import { Navbar } from "@/components/navbar"
+import { Hero } from "@/components/hero"
+import { About } from "@/components/about"
+import { Works } from "@/components/works"
+import { TechMarquee } from "@/components/tech-marquee"
+import { Footer } from "@/components/footer"
+import { CustomCursor } from "@/components/custom-cursor"
+import { SmoothScroll } from "@/components/smooth-scroll"
+import { SectionBlend } from "@/components/section-blend"
+
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail, Twitter, Menu } from "lucide-react"
 import Link from "next/link"
@@ -122,8 +132,7 @@ export default function Page() {
                   Devops Engineer
                 </h1>
                 <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                  Building digital experiences with modern technologies. Focused on creating elegant solutions to
-                  complex problems
+                  Designing products that scale, ship, and last
                 </p>
               </div>
               <div className="space-x-4 mt-4">
@@ -182,22 +191,25 @@ export default function Page() {
                 </div>
                 <div className="w-full md:w-2/3 space-y-4 text-lg">
                   <p>
-                    Hello! I&apos;m Aditya, a passionate Full Stack Developer and DevOps Engineer with a keen interest in building scalable applications and optimizing deployment pipelines.
+                    I&apos;m Aditya, a Full Stack Engineer focused on building systems that scale from prototype to production.
+                    I approach software with a strong emphasis on clean architecture and reliability across the entire stack from frontend to infrastructure.
                   </p>
-                  <p>
-                    When I&apos;m not coding, you&apos;ll find me diving into new tech stacks, working on hackathon projects, or sharing insights through writing and community engagement.
+                  <p> 
+                  Beyond development, I actively explore emerging technologies compete in hackathons and contribute back to the community.
                   </p>
+                  {/* <p>
+                  When I&apos;m not at the keyboard, I&apos;m usually deep-diving into emerging tech, competing in hackathons, or contributing back to the community
+                  </p> */}
                 </div>
               </div>
             </div>
           </section>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-
+          <div id="projects">
+                  <Works />
+          </div>
+     
           {/* Projects Section */}
-          <section id="projects" className="py-12 md:py-24">
+          {/* <section id="projects" className="py-12 md:py-24">
             <div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
                 Projects
@@ -274,20 +286,21 @@ export default function Page() {
                 />
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* Tech Stack Section */}
-          <section className="py-12 md:py-24">
+          <section className="py-10 md:py-12">
             <div>
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
-                Tech Stack
+              Stack
               </h2>
+              <TechMarquee />
               <TechStack />
             </div>
           </section>
 
           {/* Contact Section */}
-          <section id="contact" className="py-12 md:py-24">
+          {/* <section id="contact" className="py-12 md:py-24">
             <div className="mx-auto max-w-2xl">
               <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
                 Get in Touch
@@ -296,10 +309,10 @@ export default function Page() {
                 <CopyEmailButton />
               </div>
             </div>
-          </section>
+          </section> */}
         </main>
 
-        <footer className="border-t">
+        {/* <footer className="border-t">
           <div className="border-t border-gray-100 py-6 text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400">
               &copy; {new Date().getFullYear()} Aditya Hota. All rights reserved.
@@ -308,8 +321,23 @@ export default function Page() {
               Built with passion and too much coffee ☕
             </p>
           </div>
-        </footer>
+        </footer> */}
+      </div>
+      <div>
+      <SmoothScroll>
+      <CustomCursor />
+      {/* <Navbar /> */}
+      <main>
+        {/* <Hero /> */}
+        {/* <SectionBlend /> */}
+        {/* <About /> */}
+       
+
+        <Footer />
+      </main>
+    </SmoothScroll>
       </div>
     </div>
   )
 }
+
