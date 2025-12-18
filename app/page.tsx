@@ -1,22 +1,16 @@
 "use client"; 
-import { Navbar } from "@/components/navbar"
-import { Hero } from "@/components/hero"
-import { About } from "@/components/about"
+
 import { Works } from "@/components/works"
 import { TechMarquee } from "@/components/tech-marquee"
 import { Footer } from "@/components/footer"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScroll } from "@/components/smooth-scroll"
-import { SectionBlend } from "@/components/section-blend"
-
 import { Button } from "@/components/ui/button"
 import { Github, Linkedin, Mail, Twitter, Menu } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
-import ProjectCard from "./components/project-card"
 import TechStack from "./components/tech-stack"
 import { ThemeToggle } from "@/components/theme-toggle"
-import CopyEmailButton from "./components/email"
 import { useState } from "react"
 
 export default function Page() {

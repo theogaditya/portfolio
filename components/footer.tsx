@@ -1,27 +1,11 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
 export function Footer() {
-  const [time, setTime] = useState("")
   const [isHovered, setIsHovered] = useState(false)
-
-  useEffect(() => {
-    const updateTime = () => {
-      const now = new Date()
-      const hours = now.getHours().toString().padStart(2, "0")
-      const minutes = now.getMinutes().toString().padStart(2, "0")
-      const seconds = now.getSeconds().toString().padStart(2, "0")
-      const milliseconds = now.getMilliseconds().toString().padStart(3, "0")
-      setTime(`${hours}:${minutes}:${seconds}.${milliseconds}`)
-    }
-
-    updateTime()
-    const interval = setInterval(updateTime, 10)
-    return () => clearInterval(interval)
-  }, [])
 
   return (
     <footer className="relative">
@@ -51,7 +35,7 @@ export function Footer() {
               }}
               transition={{ duration: 0.3 }}
             >
-              Let's <span className="italic">Collaborate</span>
+              Let&apos;s <span className="italic">Collaborate</span>
             </motion.h2>
 
             <motion.div
