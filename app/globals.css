@@ -6,6 +6,8 @@
 /* Light theme (default) */
 :root {
   --radius: 0.625rem;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -42,7 +44,9 @@
 
 /* Dark theme */
 .dark {
-  --background: oklch(0.12 0 0);
+  --background: oklch(16.376% 0.00002 271.152);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.16 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -76,9 +80,58 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Terminal/CLI Theme - Linux Terminal Experience */
+.retro {
+  --background: #0d1117;
+  --foreground: #c9d1d9;
+  --card: #161b22;
+  --card-foreground: #c9d1d9;
+  --popover: #161b22;
+  --popover-foreground: #c9d1d9;
+  --primary: #58a6ff;
+  --primary-foreground: #0d1117;
+  --secondary: #21262d;
+  --secondary-foreground: #c9d1d9;
+  --muted: #21262d;
+  --muted-foreground: #8b949e;
+  --accent: #39d353;
+  --accent-foreground: #0d1117;
+  --destructive: #f85149;
+  --destructive-foreground: #ffffff;
+  --border: #30363d;
+  --input: #0d1117;
+  --ring: #58a6ff;
+  --chart-1: #58a6ff;
+  --chart-2: #39d353;
+  --chart-3: #f0883e;
+  --chart-4: #a371f7;
+  --chart-5: #f85149;
+  --sidebar: #0d1117;
+  --sidebar-foreground: #c9d1d9;
+  --sidebar-primary: #58a6ff;
+  --sidebar-primary-foreground: #0d1117;
+  --sidebar-accent: #21262d;
+  --sidebar-accent-foreground: #c9d1d9;
+  --sidebar-border: #30363d;
+  --sidebar-ring: #58a6ff;
+  
+  /* Terminal colors */
+  --term-black: #0d1117;
+  --term-red: #f85149;
+  --term-green: #39d353;
+  --term-yellow: #d29922;
+  --term-blue: #58a6ff;
+  --term-magenta: #a371f7;
+  --term-cyan: #56d4dd;
+  --term-white: #c9d1d9;
+  --term-bright-black: #484f58;
+  --term-bright-green: #56d364;
+  --term-prompt: #39d353;
+}
+
 @theme inline {
-  --font-sans: "Playfair Display", "Georgia", serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", monospace;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -188,4 +241,465 @@
 
 .animate-marquee-right {
   animation: marquee-right 50s linear infinite;
+}
+
+/* Gradient text animation */
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 3s ease infinite;
+}
+
+/* Pulse glow animation */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(var(--accent), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(var(--accent), 0.6);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Float animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Vignette overlay for premium feel */
+.vignette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.15) 100%
+  );
+}
+
+.dark .vignette-overlay {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.retro .vignette-overlay {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.08) 100%
+  );
+}
+
+/* Glassmorphism card styles */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Early 2000s Apple Aqua glassmorphism */
+.retro .glass-card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(245, 245, 247, 0.9) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.retro .glass-card:hover {
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    0 12px 32px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Gradient mesh backgrounds */
+.gradient-mesh-1 {
+  background: 
+    radial-gradient(at 40% 20%, rgba(var(--accent), 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(var(--primary), 0.08) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(var(--accent), 0.06) 0px, transparent 50%),
+    radial-gradient(at 80% 50%, rgba(var(--primary), 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(var(--accent), 0.08) 0px, transparent 50%);
+}
+
+.gradient-mesh-2 {
+  background: 
+    radial-gradient(at 0% 0%, rgba(var(--accent), 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(var(--primary), 0.08) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(var(--accent), 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(var(--accent), 0.1) 0px, transparent 50%);
+}
+
+/* Terminal theme - no gradient meshes */
+.retro .gradient-mesh-1 {
+  background: none !important;
+}
+
+.retro .gradient-mesh-2 {
+  background: none !important;
+}
+
+/* ============================================
+   TERMINAL / CLI THEME
+   Full Linux terminal experience
+   Navigate the site using commands
+   ============================================ */
+
+/* Monospace font everywhere */
+.retro,
+.retro * {
+  font-family: "JetBrains Mono", "Fira Code", "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", "Source Code Pro", "Ubuntu Mono", monospace !important;
+}
+
+/* Pure black terminal background */
+.retro .bg-background {
+  background-color: #0d1117 !important;
+  background-image: none !important;
+}
+
+/* Hide all normal UI elements in terminal mode */
+.retro header,
+.retro nav,
+.retro .navbar,
+.retro footer {
+  display: none !important;
+}
+
+/* Hide decorative elements */
+.retro .vignette-overlay,
+.retro .noise-overlay {
+  display: none !important;
+}
+
+/* Remove all modern styling from cards - make them terminal windows */
+.retro .glass-card,
+.retro [class*="Card"],
+.retro [class*="card"] {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Terminal text colors */
+.retro h1, .retro h2, .retro h3, .retro h4, .retro h5, .retro h6 {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #58a6ff !important;
+  background-clip: unset !important;
+  color: #58a6ff !important;
+  animation: none !important;
+  font-weight: bold !important;
+  letter-spacing: normal !important;
+  text-shadow: none !important;
+}
+
+.retro p,
+.retro span,
+.retro div,
+.retro li {
+  color: #c9d1d9 !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* Links styled as terminal commands/paths */
+.retro a {
+  color: #56d4dd !important;
+  text-decoration: none !important;
+}
+
+.retro a:hover {
+  color: #39d353 !important;
+  text-decoration: underline !important;
+  text-shadow: none !important;
+}
+
+/* Terminal-style buttons */
+.retro button,
+.retro [class*="Button"] {
+  background: transparent !important;
+  border: 1px solid #39d353 !important;
+  border-radius: 0 !important;
+  color: #39d353 !important;
+  font-size: 14px !important;
+  padding: 8px 16px !important;
+  text-shadow: none !important;
+  box-shadow: none !important;
+  transition: all 0.1s ease !important;
+}
+
+.retro button:hover,
+.retro [class*="Button"]:hover {
+  background: #39d353 !important;
+  color: #0d1117 !important;
+  border-color: #39d353 !important;
+  box-shadow: 0 0 10px rgba(57, 211, 83, 0.3) !important;
+}
+
+.retro button:active,
+.retro [class*="Button"]:active {
+  background: #56d364 !important;
+}
+
+/* Skill badges as terminal tags */
+.retro [class*="rounded-lg"][class*="bg-primary"] {
+  background: transparent !important;
+  border: 1px solid #484f58 !important;
+  border-radius: 0 !important;
+  color: #d29922 !important;
+  font-size: 12px !important;
+  padding: 4px 8px !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+.retro [class*="rounded-lg"][class*="bg-primary"]:hover {
+  background: #21262d !important;
+  border-color: #d29922 !important;
+  color: #d29922 !important;
+  box-shadow: none !important;
+}
+
+/* Terminal scrollbar */
+.retro ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Remove focus ring from terminal input */
+.retro input,
+.retro input:focus,
+.retro input:active {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Prevent body scroll when terminal is active */
+.retro body,
+body.retro {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+.retro ::-webkit-scrollbar-track {
+  background: #0d1117;
+  border: none;
+}
+
+.retro ::-webkit-scrollbar-thumb {
+  background: #30363d;
+  border-radius: 0;
+}
+
+.retro ::-webkit-scrollbar-thumb:hover {
+  background: #484f58;
+}
+
+/* Terminal input fields */
+.retro input,
+.retro textarea {
+  background: #0d1117 !important;
+  border: 1px solid #30363d !important;
+  border-radius: 0 !important;
+  color: #c9d1d9 !important;
+  font-size: 14px !important;
+  padding: 8px 12px !important;
+  box-shadow: none !important;
+}
+
+.retro input:focus,
+.retro textarea:focus {
+  border-color: #58a6ff !important;
+  box-shadow: 0 0 0 1px #58a6ff !important;
+  outline: none !important;
+}
+
+.retro input::placeholder,
+.retro textarea::placeholder {
+  color: #484f58 !important;
+}
+
+/* Images with terminal border */
+.retro img {
+  border: 1px solid #30363d !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  opacity: 0.9;
+}
+
+.retro img:hover {
+  opacity: 1;
+  border-color: #58a6ff !important;
+}
+
+/* Dividers */
+.retro [class*="Divider"],
+.retro [class*="divider"],
+.retro hr {
+  background: #30363d !important;
+  border: none !important;
+  height: 1px !important;
+  box-shadow: none !important;
+}
+
+/* Selection */
+.retro ::selection {
+  background: #388bfd;
+  color: #ffffff;
+}
+
+/* Icons */
+.retro svg {
+  color: #8b949e !important;
+}
+
+.retro svg:hover {
+  color: #c9d1d9 !important;
+}
+
+/* Hide marquee in terminal mode - too flashy */
+.retro .animate-marquee-left,
+.retro .animate-marquee-right {
+  color: #484f58 !important;
+  font-size: 12px !important;
+}
+
+/* Remove any pseudo-element overlays */
+.retro::before,
+.retro::after {
+  display: none !important;
+}
+
+/* CRT scanline effect - subtle */
+.retro .bg-background::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.retro .cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+/* Terminal glow effect on text */
+.retro .glow-green {
+  text-shadow: 0 0 5px rgba(57, 211, 83, 0.5);
+}
+
+.retro .glow-blue {
+  text-shadow: 0 0 5px rgba(88, 166, 255, 0.5);
+}
+/* Progress bar animation */
+@keyframes progress-fill {
+  from {
+    width: 0%;
+  }
+}
+
+.animate-progress {
+  animation: progress-fill 1s ease-out forwards;
+}
+
+/* Skill hover animation */
+.skill-hover:hover {
+  opacity: 0.8;
 }

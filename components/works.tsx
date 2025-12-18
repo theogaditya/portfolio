@@ -4,30 +4,22 @@ import type React from "react"
 
 import { useState, useRef } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
+import { Github, ExternalLink } from "lucide-react"
+import { projects as projectsData } from "@/lib/data"
 
-const projects = [
-  {
-    title: "Inkwell: A dev first blogging platform",
-    tags: ["React", "TailwindCSS", "Clerk", "Express","Prisma", "PostgreSQL","Redis","WebSocket", "Swagger UI", "Docker", "Kubernetes", "NGINX"],
-    image: "https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/inkwell.svg",
-    year: "2025",
-  },
-  {
-    title: "SwarajDesk: Civic engagement and resolution system",
-    tags: ["Next.js","TailwindCSS","Capacitor.js", "Bun", "Express","Prisma", "PostgreSQL","Redis", "Pub/Sub", "S3", "Docker", "Kubernetes", "ArgoCD", "CI/CD"],
-    image: "https://sih-swaraj.s3.ap-south-2.amazonaws.com/public-media/Screenshot+From+2025-12-18+10-17-55.png",
-    year: "2025",
-  },
-  {
-    title: "SwarajDesk: Admin Portal",
-    tags: ["Next.js","TailwindCSS","Capacitor.js", "Bun", "Express","Prisma", "PostgreSQL","Redis", "S3", "Docker", "Kubernetes", "ArgoCD", "CI/CD"],
-    image: "https://sih-swaraj.s3.ap-south-2.amazonaws.com/public-media/Screenshot+From+2025-12-18+10-22-25.png",
-    year: "2025",
-  },
-]
+// Map the shared data to the format needed for this component
+const projects = projectsData.map(p => ({
+  title: p.title,
+  tags: p.tags,
+  image: p.image,
+  year: p.year,
+  liveUrl: p.liveUrl,
+  githubUrl: p.githubUrl,
+}))
 
 export function Works() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hasMouseMoved, setHasMouseMoved] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const mouseX = useMotionValue(0)
@@ -37,15 +29,13 @@ export function Works() {
   const springY = useSpring(mouseY, { stiffness: 150, damping: 20 })
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      mouseX.set(e.clientX - rect.left)
-      mouseY.set(e.clientY - rect.top)
-    }
+    if (!hasMouseMoved) setHasMouseMoved(true)
+    mouseX.set(e.clientX)
+    mouseY.set(e.clientY)
   }
 
   return (
-    <section className="relative py-24 overflow-hidden md:py-32">
+    <section className="relative py-18 overflow-hidden md:py-26">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -70,29 +60,56 @@ export function Works() {
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <a
-              href="#"
-              data-cursor-hover
-              className="group flex flex-col md:flex-row md:items-center justify-between gap-4"
-            >
+            <div className="group flex flex-col md:flex-row md:items-center justify-between gap-4">
               {/* Year */}
               <span className="font-mono text-xs text-muted-foreground tracking-[0.3em] order-1 md:order-0">
                 {project.year}
               </span>
 
-              {/* Title */}
-              <motion.h3
-                className="font-sans text-xl md:text-2xl lg:text-4xl font-semibold tracking-tight text-foreground/90 group-hover:text-foreground/70 transition-colors duration-300 flex-1"
+              {/* Title - clickable to live demo */}
+              <motion.a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-cursor-hover
+                className="font-sans text-xl md:text-2xl lg:text-4xl font-semibold tracking-tight text-foreground/90 hover:text-foreground/70 active:text-foreground/60 transition-colors duration-300 flex-1 flex items-center gap-3"
                 animate={{
                   x: hoveredIndex === index ? 20 : 0,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 {project.title}
-              </motion.h3>
+                {/* <ExternalLink className="w-4 h-4 md:w-5 md:h-5 opacity-50 group-hover:opacity-100 transition-opacity" /> */}
+              </motion.a>
+
+              {/* Actions: GitHub button and Live link */}
+              <div className="flex flex-col gap-5 order-2 md:order-0">
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor-hover
+                  className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/70 active:bg-foreground/70 transition-all duration-300"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Github className="w-4 h-4" />
+                  <span className="text-[11px] tracking-[0.15em]">CODE</span>
+                </a>
+                <a
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-cursor-hover
+                  className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/80 active:bg-foreground/70 transition-all duration-300"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  <span className="text-[11px] tracking-[0.15em]">LIVE</span>
+                </a>
+              </div>
 
               {/* Tags */}
-              <div className="flex gap-2 flex-wrap order-2 md:order-0 max-w-85">
+              <div className="flex gap-2 flex-wrap order-3 md:order-0 max-w-85">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
@@ -102,22 +119,22 @@ export function Works() {
                   </span>
                 ))}
               </div>
-            </a>
+            </div>
           </motion.div>
         ))}
 
-        {/* Floating Image */}
+        {/* Floating Image - Desktop only, only show after mouse has moved */}
         <motion.div
-          className="absolute pointer-events-none z-50 w-64 h-40 md:w-80 md:h-48 overflow-hidden rounded-lg"
+          className="hidden md:block fixed pointer-events-none z-50 w-64 h-40 md:w-80 md:h-48 overflow-hidden rounded-lg"
           style={{
-            x: springX,
-            y: springY,
-            translateX: "-50%",
-            translateY: "-320%",
+            left: springX,
+            top: springY,
+            translateX: "20px",
+            translateY: "-50%",
           }}
           animate={{
-            opacity: hoveredIndex !== null ? 1 : 0,
-            scale: hoveredIndex !== null ? 1 : 0.8,
+            opacity: hoveredIndex !== null && hasMouseMoved ? 1 : 0,
+            scale: hoveredIndex !== null && hasMouseMoved ? 1 : 0.8,
           }}
           transition={{ duration: 0.2 }}
         >
@@ -135,7 +152,7 @@ export function Works() {
             />
           )}
           {/* Glitch overlay */}
-          <div className="absolute inset-0 bg-[#2563eb]/10 mix-blend-overlay" />
+          <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
         </motion.div>
       </div>
 

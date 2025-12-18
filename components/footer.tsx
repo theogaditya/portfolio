@@ -3,19 +3,21 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import { ConnectModal } from "./connect-modal"
 
 export function Footer() {
   const [isHovered, setIsHovered] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
     <footer className="relative">
       {/* Main CTA */}
-      <motion.a
-        href="mailto:hello@example.com"
+      <motion.button
         data-cursor-hover
-        className="relative block overflow-hidden"
+        className="relative block overflow-hidden w-full text-left"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onClick={() => setIsModalOpen(true)}
       >
         {/* Background Curtain */}
         <motion.div
@@ -31,7 +33,7 @@ export function Footer() {
             <motion.h2
               className="font-sans text-4xl md:text-6xl lg:text-8xl font-light tracking-tight text-center md:text-left"
               animate={{
-                color: isHovered ? "#050505" : "var(--foreground)",
+                color: isHovered ? "var(--background)" : "var(--foreground)",
               }}
               transition={{ duration: 0.3 }}
             >
@@ -41,7 +43,7 @@ export function Footer() {
             <motion.div
               animate={{
                 rotate: isHovered ? 45 : 0,
-                color: isHovered ? "#050505" : "var(--foreground)",
+                color: isHovered ? "var(--background)" : "var(--foreground)",
               }}
               transition={{ duration: 0.3 }}
             >
@@ -49,7 +51,10 @@ export function Footer() {
             </motion.div>
           </div>
         </div>
-      </motion.a>
+      </motion.button>
+
+      {/* Connect Modal */}
+      <ConnectModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </footer>
   )
 }

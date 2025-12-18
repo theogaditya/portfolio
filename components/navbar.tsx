@@ -2,6 +2,9 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useTheme } from "next-themes"
+import { Terminal } from "lucide-react"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -12,6 +15,7 @@ const navLinks = [
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { setTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +75,20 @@ export function Navbar() {
 
           {/* Status Indicator */}
           <div className="hidden md:flex items-center gap-3">
+            {/* Terminal Mode Button - Made more prominent with pulse hint */}
+            <div className="relative group">
+              <button
+                onClick={() => setTheme("retro")}
+                className="relative flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#0d1117] border border-[#30363d] hover:border-[#39d353] hover:bg-[#161b22] transition-all duration-300"
+                title="Enter Terminal Mode - Navigate with CLI commands"
+              >
+                <Terminal className="w-4 h-4 text-[#39d353]" />
+                <span className="font-mono text-[10px] tracking-wider text-[#8b949e] group-hover:text-[#39d353] transition-colors">./terminal</span>
+              </button>
+              {/* Subtle glow effect */}
+              <span className="absolute inset-0 rounded-md bg-[#39d353]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity -z-10" />
+            </div>
+            <ThemeToggle />
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
@@ -129,13 +147,27 @@ export function Navbar() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
-                className="flex items-center gap-3 mt-8"
+                className="flex flex-col items-center gap-4 mt-8"
               >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
-                </span>
-                <span className="font-mono text-xs tracking-wider text-muted-foreground">AVAILABLE FOR WORK</span>
+                {/* Terminal Mode Button - More prominent */}
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false)
+                    setTheme("retro")
+                  }}
+                  className="group flex items-center gap-2 px-5 py-2.5 rounded-md bg-[#0d1117] border border-[#30363d] hover:border-[#39d353] hover:bg-[#161b22] transition-all duration-300"
+                >
+                  <Terminal className="w-5 h-5 text-[#39d353]" />
+                  <span className="font-mono text-sm tracking-wider text-[#8b949e] group-hover:text-[#39d353] transition-colors">./terminal</span>
+                </button>
+                <div className="flex items-center gap-3">
+                  <ThemeToggle />
+                  <span className="relative flex h-2 w-2">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-accent" />
+                  </span>
+                  <span className="font-mono text-xs tracking-wider text-muted-foreground">AVAILABLE FOR WORK</span>
+                </div>
               </motion.div>
             </nav>
           </motion.div>
