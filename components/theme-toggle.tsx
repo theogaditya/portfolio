@@ -35,7 +35,7 @@ export function ThemeToggle() {
     // Hide hint after 13 seconds total
     const hideTimer = setTimeout(() => {
       setShowHint(false)
-    }, 15000)
+    }, 10000)
     
     return () => {
       clearTimeout(showTimer)

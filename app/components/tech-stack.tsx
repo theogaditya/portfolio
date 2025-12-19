@@ -42,7 +42,7 @@ const skillIcons: Record<string, string> = {
   // Others
   "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
   "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  "Turborepo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/turborepo/turborepo-original.svg",
+  "Turborepo": "https://turbo.build/images/docs/repo/repo-hero-logo-dark.svg",
   "Linux": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
   "Unit Testing": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg",
   "Integration Testing": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg",
