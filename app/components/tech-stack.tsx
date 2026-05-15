@@ -8,8 +8,7 @@ const skillIcons: Record<string, string> = {
   // Languages
   "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   "JavaScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-  "C": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
-  "C++": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
   // Frontend
   "HTML": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
   "React": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
@@ -24,6 +23,7 @@ const skillIcons: Record<string, string> = {
   "Pub/Sub": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
   "Redis": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg",
   "gRPC": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grpc/grpc-original.svg",
+  "LangChain": "https://cdn.simpleicons.org/langchain/1C3C3C",
   // Cloud & DevOps
   "Docker": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
   "CI/CD": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg",
@@ -42,7 +42,6 @@ const skillIcons: Record<string, string> = {
   // Others
   "Git": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
   "GitHub": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-  "Turborepo": "https://turbo.build/images/docs/repo/repo-hero-logo-dark.svg",
   "Linux": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
   "Unit Testing": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg",
   "Integration Testing": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg",
@@ -58,18 +57,18 @@ function SkillBadge({ skill, index }: { skill: string; index: number }) {
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ 
-        duration: 0.3, 
+      transition={{
+        duration: 0.3,
         delay: index * 0.03,
       }}
       className="group"
     >
       <span className="inline-flex items-center gap-2 rounded-lg bg-primary/10 px-3 py-2 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20 cursor-default transition-all duration-200 group-hover:bg-primary/15 group-hover:ring-primary/30">
         {iconUrl && (
-          <Image 
-            src={iconUrl} 
-            alt={skill} 
-            width={18} 
+          <Image
+            src={iconUrl}
+            alt={skill}
+            width={18}
             height={18}
             className="opacity-70 group-hover:opacity-100 transition-opacity duration-200"
           />
@@ -82,7 +81,7 @@ function SkillBadge({ skill, index }: { skill: string; index: number }) {
 
 function CategoryCard({ tech, index }: { tech: typeof technologies[0]; index: number }) {
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
@@ -90,7 +89,7 @@ function CategoryCard({ tech, index }: { tech: typeof technologies[0]; index: nu
       className="glass-card rounded-2xl p-6 hover:shadow-xl transition-shadow duration-300"
     >
       <h3 className="text-lg font-semibold mb-4">{tech.category}</h3>
-      
+
       {/* Skills grid */}
       <div className="flex flex-wrap gap-2">
         {tech.skills.map((skill, skillIndex) => (
@@ -106,7 +105,7 @@ export default function TechStack() {
     <div className="relative py-18">
       {/* Gradient mesh background */}
       <div className="absolute inset-0 gradient-mesh-2 opacity-50 pointer-events-none" />
-      
+
       <div className="relative grid gap-6 md:grid-cols-2">
         {technologies.map((tech, index) => (
           <CategoryCard key={tech.category} tech={tech} index={index} />

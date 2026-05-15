@@ -6,7 +6,7 @@ import { Footer } from "@/components/footer"
 import { CustomCursor } from "@/components/custom-cursor"
 import { SmoothScroll } from "@/components/smooth-scroll"
 import { Button } from "@/components/ui/button"
-import { Github, Linkedin, Mail, Twitter, Menu } from "lucide-react"
+import { Github, Linkedin, Mail, Twitter, Menu, Trophy, FileText, Medal, Star } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 import TechStack from "./components/tech-stack"
@@ -42,14 +42,14 @@ export default function Page() {
           <div className="flex h-14 items-center justify-between">
             {/* Logo/Name - visible on all screens */}
             <Link className="flex items-center space-x-2 group" href="/">
-              <motion.span 
+              <motion.span
                 className="font-bold"
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
                 Aditya Hota
               </motion.span>
-              <motion.span 
+              <motion.span
                 className="w-2 h-2 rounded-full bg-accent"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
@@ -62,14 +62,15 @@ export default function Page() {
                 { label: "About Me", id: "about-me" },
                 { label: "Experience", id: "experience" },
                 { label: "Projects", id: "projects" },
+                { label: "Achievements", id: "achievements" },
               ].map((item) => (
                 <motion.div
                   key={item.id}
                   whileHover={{ y: -2 }}
                   transition={{ type: "spring", stiffness: 400 }}
                 >
-                  <Link 
-                    href={`#${item.id}`} 
+                  <Link
+                    href={`#${item.id}`}
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.id);
@@ -81,8 +82,8 @@ export default function Page() {
                   </Link>
                 </motion.div>
               ))}
-              <motion.button 
-                onClick={() => setConnectModalOpen(true)} 
+              <motion.button
+                onClick={() => setConnectModalOpen(true)}
                 className="relative transition-colors hover:text-foreground/80 group"
                 whileHover={{ y: -2 }}
                 transition={{ type: "spring", stiffness: 400 }}
@@ -98,7 +99,7 @@ export default function Page() {
               <ThemeToggle />
 
               {/* Resume button with PDF link */}
-              <Link href="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/resume.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="/FInal.pdf" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline">
                   Resume
                 </Button>
@@ -120,7 +121,7 @@ export default function Page() {
           {/* Mobile Navigation */}
           <AnimatePresence>
             {mobileMenuOpen && (
-              <motion.div 
+              <motion.div
                 className="md:hidden py-4 bg-background border-t"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
@@ -132,6 +133,7 @@ export default function Page() {
                     { label: "About Me", id: "about-me" },
                     { label: "Experience", id: "experience" },
                     { label: "Projects", id: "projects" },
+                    { label: "Achievements", id: "achievements" },
                   ].map((item, index) => (
                     <motion.div
                       key={item.id}
@@ -171,13 +173,13 @@ export default function Page() {
           <section className="py-12 md:py-24 relative">
             <Sparkles count={30} />
             <div className="text-center relative z-10">
-              <motion.div 
+              <motion.div
                 className="space-y-2"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.5 }}
               >
-                <motion.h1 
+                <motion.h1
                   className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -192,7 +194,7 @@ export default function Page() {
                     Full Stack Developer
                   </motion.span>
                   <br />
-                  <motion.span 
+                  <motion.span
                     className="text-foreground/80 inline-block"
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -208,7 +210,7 @@ export default function Page() {
                     Devops Engineer
                   </motion.span>
                 </motion.h1>
-                <motion.p 
+                <motion.p
                   className="mx-auto max-w-[700px] text-muted-foreground md:text-xl"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -219,37 +221,37 @@ export default function Page() {
               </motion.div>
 
               {/* Social Links */}
-              <motion.div 
+              <motion.div
                 className="flex items-center justify-center gap-4 mt-10"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 1.1 }}
               >
                 {[
-                  { 
-                    href: "https://github.com/theogaditya", 
-                    icon: Github, 
+                  {
+                    href: "https://github.com/theogaditya",
+                    icon: Github,
                     label: "GitHub",
                     bgHover: "group-hover:bg-[#333] dark:group-hover:bg-white",
                     iconHover: "group-hover:text-white dark:group-hover:text-[#333]"
                   },
-                  { 
-                    href: "https://www.linkedin.com/in/aditya-hota-6b1167276", 
-                    icon: Linkedin, 
+                  {
+                    href: "https://www.linkedin.com/in/aditya-hota-6b1167276",
+                    icon: Linkedin,
                     label: "LinkedIn",
                     bgHover: "group-hover:bg-[#0077B5]",
                     iconHover: "group-hover:text-white"
                   },
-                  { 
-                    href: "https://x.com/adityahota01", 
-                    icon: Twitter, 
+                  {
+                    href: "https://x.com/adityahota01",
+                    icon: Twitter,
                     label: "Twitter/X",
                     bgHover: "group-hover:bg-[#000] dark:group-hover:bg-white",
                     iconHover: "group-hover:text-white dark:group-hover:text-[#000]"
                   },
-                  { 
-                    href: "mailto:adityahota99@gmail.com", 
-                    icon: Mail, 
+                  {
+                    href: "mailto:adityahota99@gmail.com",
+                    icon: Mail,
                     label: "Email",
                     bgHover: "group-hover:bg-accent",
                     iconHover: "group-hover:text-white"
@@ -259,8 +261,8 @@ export default function Page() {
                     key={social.label}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ 
-                      duration: 0.5, 
+                    transition={{
+                      duration: 0.5,
                       delay: 1.2 + index * 0.1,
                       ease: [0.25, 0.46, 0.45, 0.94]
                     }}
@@ -273,12 +275,12 @@ export default function Page() {
                     >
                       {/* Background circle */}
                       <span className={`absolute inset-0 rounded-xl bg-foreground/5 transition-all duration-300 ${social.bgHover}`} />
-                      
+
                       {/* Icon container */}
                       <span className="relative p-3.5">
                         <social.icon className={`w-5 h-5 text-foreground/70 transition-all duration-300 ${social.iconHover}`} />
                       </span>
-                      
+
                       {/* Tooltip */}
                       <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 px-2.5 py-1 text-[10px] font-medium tracking-wider uppercase bg-foreground text-background rounded-md opacity-0 group-hover:opacity-100 transition-all duration-300 whitespace-nowrap pointer-events-none scale-90 group-hover:scale-100">
                         {social.label}
@@ -298,7 +300,7 @@ export default function Page() {
           <section id="about-me" className="py-0 md:py-24 relative">
             {/* Gradient mesh background */}
             <div className="absolute inset-0 gradient-mesh-1 opacity-40 pointer-events-none -z-10" />
-            
+
             <AnimatedSection className="mx-auto max-w-4xl">
               <BlurIn delay={0.1}>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-8 text-center">
@@ -307,7 +309,7 @@ export default function Page() {
               </BlurIn>
 
               <div className="flex flex-col md:flex-row gap-8 items-center">
-                <motion.div 
+                <motion.div
                   className="w-full max-w-64 md:w-1/3 mx-auto md:mx-0"
                   initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
                   whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
@@ -315,7 +317,7 @@ export default function Page() {
                   transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
                   {/* Using Next.js Image component with responsive styling */}
-                  <motion.div 
+                  <motion.div
                     className="relative w-full pb-[100%] overflow-hidden rounded-full border-4 border-gray-200 dark:border-gray-800 bg-white"
                     whileHover={{ scale: 1.05, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -345,13 +347,13 @@ export default function Page() {
               </div>
             </AnimatedSection>
           </section>
-          
+
           <AnimatedDivider />
           {/* Experience Section */}
           <section id="experience" className="py-22 md:py-26 relative">
             {/* Gradient mesh background */}
             <div className="absolute inset-0 gradient-mesh-2 opacity-30 pointer-events-none -z-10" />
-            
+
             <AnimatedSection className="mx-auto max-w-4xl">
               <BlurIn delay={0.1}>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl mb-12 text-center">
@@ -361,7 +363,7 @@ export default function Page() {
               <br></br>
               <div className="relative">
                 {/* Timeline line */}
-                <motion.div 
+                <motion.div
                   className="absolute left-0 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2"
                   initial={{ scaleY: 0 }}
                   whileInView={{ scaleY: 1 }}
@@ -370,8 +372,98 @@ export default function Page() {
                   style={{ originY: 0 }}
                 />
 
+                {/* Experience Item - Intern */}
+                <motion.div
+                  className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-8 mb-12"
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  {/* Left side - Content */}
+                  <motion.div
+                    className="md:pr-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                  >
+                    {/* Mobile date */}
+                    <span className="md:hidden font-mono text-xs text-muted-foreground tracking-wider mb-2 block uppercase">
+                      MAY 2025 — JUNE 2025
+                    </span>
+
+                    <GlowingBorder>
+                      <motion.div
+                        className="group p-6 rounded-xl glass-card hover:shadow-xl transition-all duration-300"
+                        whileHover={{ y: -5 }}
+                        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                      >
+                        <div className="flex items-start justify-between gap-4 mb-3">
+                          <div>
+                            <h3 className="text-lg md:text-xl font-semibold tracking-tight">
+                              Summer Intern
+                            </h3>
+                            <p className="text-muted-foreground font-medium mt-1">
+                              Batoi Systems
+                            </p>
+                            <p className="text-sm text-muted-foreground">
+                              Bhubaneswar
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="text-muted-foreground leading-relaxed text-sm space-y-2 mt-2">
+                          <p>• Contributed to productionizing a hackathon-winning prototype during a 6-week internship with the Batoi team.</p>
+                          <p>• Integrated Batoi Insight workflows into the platform, including survey configuration, report generation, and response management optimization.</p>
+                        </div>
+
+                        <StaggerContainer className="flex flex-wrap gap-2 mt-4" staggerDelay={0.05}>
+                          {["Integration", "Workflows", "Prototyping"].map((tag) => (
+                            <StaggerItem key={tag}>
+                              <motion.span
+                                className="px-2 py-1 text-xs font-mono rounded-md bg-muted text-muted-foreground"
+                                whileHover={{ scale: 1.05, backgroundColor: "var(--accent)", color: "white" }}
+                                transition={{ duration: 0.2 }}
+                              >
+                                {tag}
+                              </motion.span>
+                            </StaggerItem>
+                          ))}
+                        </StaggerContainer>
+                      </motion.div>
+                    </GlowingBorder>
+                  </motion.div>
+
+                  {/* Timeline dot */}
+                  <motion.div
+                    className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-accent border-2 border-background md:-translate-x-1/2 -translate-x-1/2"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.6, type: "spring", stiffness: 200 }}
+                  >
+                    <span className="absolute inset-0 rounded-full bg-accent animate-ping opacity-30" />
+                  </motion.div>
+
+                  {/* Right side - Date */}
+                  <div className="hidden md:flex md:justify-start md:pl-8">
+                    <motion.div
+                      className="text-left"
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
+                    >
+                      <span className="font-mono text-sm text-muted-foreground tracking-wider uppercase">
+                        MAY 2025 - JUNE 2025
+                      </span>
+                    </motion.div>
+                  </div>
+                </motion.div>
+
                 {/* Experience Item */}
-                <motion.div 
+                <motion.div
                   className="relative pl-8 md:pl-0 md:grid md:grid-cols-2 md:gap-8"
                   initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -380,7 +472,7 @@ export default function Page() {
                 >
                   {/* Left side - Date */}
                   <div className="hidden md:flex md:justify-end md:pr-8">
-                    <motion.div 
+                    <motion.div
                       className="text-right"
                       initial={{ opacity: 0, x: -20 }}
                       whileInView={{ opacity: 1, x: 0 }}
@@ -390,11 +482,12 @@ export default function Page() {
                       <span className="font-mono text-sm text-muted-foreground tracking-wider">
                         OCTOBER 2025 - PRESENT
                       </span>
+
                     </motion.div>
                   </div>
 
                   {/* Timeline dot */}
-                  <motion.div 
+                  <motion.div
                     className="absolute left-0 md:left-1/2 top-0 w-3 h-3 rounded-full bg-accent border-2 border-background md:-translate-x-1/2 -translate-x-1/2"
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
@@ -405,7 +498,7 @@ export default function Page() {
                   </motion.div>
 
                   {/* Right side - Content */}
-                  <motion.div 
+                  <motion.div
                     className="md:pl-8"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -418,7 +511,7 @@ export default function Page() {
                     </span>
 
                     <GlowingBorder>
-                      <motion.div 
+                      <motion.div
                         className="group p-6 rounded-xl glass-card hover:shadow-xl transition-all duration-300"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -435,7 +528,7 @@ export default function Page() {
                               C.V. Raman Global University
                             </p>
                           </div>
-                          <motion.div 
+                          <motion.div
                             className="shrink-0 p-2 rounded-lg bg-muted/50"
                             whileHover={{ rotate: 10, scale: 1.1 }}
                             transition={{ type: "spring", stiffness: 300 }}
@@ -451,13 +544,12 @@ export default function Page() {
 
                         <p className="text-muted-foreground leading-relaxed">
                           Contributing to the Web Development domain at GDG and mentoring fellow developers.
-                          Conducted multiple hands-on workshops for a cumulative total of <span className="text-foreground font-medium">300+ participants</span>.
-                        </p>
+                          Conducted multiple hands-on workshops.</p>
 
                         <StaggerContainer className="flex flex-wrap gap-2 mt-4" staggerDelay={0.05}>
                           {["Leadership", "Mentoring", "Workshops", "Web Development"].map((tag) => (
                             <StaggerItem key={tag}>
-                              <motion.span 
+                              <motion.span
                                 className="px-2 py-1 text-xs font-mono rounded-md bg-muted text-muted-foreground"
                                 whileHover={{ scale: 1.05, backgroundColor: "var(--accent)", color: "white" }}
                                 transition={{ duration: 0.2 }}
@@ -481,7 +573,11 @@ export default function Page() {
             <Works />
           </div>
 
-          <AnimatedDivider />
+
+
+
+
+
 
           {/* Tech Stack Section */}
           <section className="py-12 md:py-12">
@@ -509,6 +605,111 @@ export default function Page() {
                 <TechStack />
               </motion.div>
             </AnimatedSection>
+          </section>
+
+          <AnimatedDivider />
+
+          {/* Achievements Section */}
+          <section id="achievements" className="relative py-18 overflow-hidden md:py-26">
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="px-8 md:px-12 mb-12"
+            >
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">Achievements</h2>
+            </motion.div>
+
+            <div className="px-8 md:px-12 space-y-4">
+
+              {/* ── Patent card ── */}
+              <motion.a
+                href="/ViewPDF.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.0 }}
+                whileHover={{ y: -4 }}
+              >
+                <div className="rounded-2xl p-7 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <span className="font-mono text-[15px] tracking-widest text-accent uppercase block mb-3 font-semibold">Indian Patent · No. 202631019043 · 2026</span>
+                      <h3 className="text-lg md:text-xl font-bold tracking-tight leading-snug mb-3">
+                        Offline-First AI Issue Reporting System
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xl">
+                        An offline-first, AI-enabled system for decentralized issue reporting, automated routing, and immutable resolution tracking.
+                      </p>
+                    </div>
+                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-foreground/20 text-muted-foreground text-xs font-mono group-hover:border-accent/50 group-hover:text-accent transition-all duration-200 whitespace-nowrap">
+                      <FileText className="w-3.5 h-3.5" />
+                      View PDF
+                    </div>
+                  </div>
+                </div>
+              </motion.a>
+
+              {/* ── Research Paper card ── */}
+              <motion.div
+                className="rounded-2xl p-7 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300"
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.1 }}
+                whileHover={{ y: -4 }}
+              >
+                <span className="font-mono text-[15px] tracking-widest text-accent uppercase block mb-3 font-semibold">Research Paper · Under Review</span>
+                <h3 className="text-lg md:text-xl font-bold tracking-tight leading-snug mb-3">
+                  Connection-Aware Autoscaling for Stateful Workloads in Kubernetes
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xl">
+                  Co-authored research on a custom controller resolving HPA scale-up blindness, connection imbalance, and violent disconnections in stateful MQTT workloads.
+                </p>
+              </motion.div>
+
+              {/* ── Hackathons subheading ── */}
+              <motion.p
+                className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase pt-4 pb-1"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.18 }}
+              >
+                Hackathons
+              </motion.p>
+
+              {/* ── Hackathon bento grid ── */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {[
+                  { label: "Winner", title: "Code Relay 2026", org: "IIT BBSR", year: "2026" },
+                  { label: "Winner", title: "Srusti Tech Hack 2025", org: "Srusti Academy of Management and Technology", year: "2025" },
+                  { label: "Grand Finalist", title: "Smart India Hackathon 2025", org: "Govt. of India", year: "2025" },
+                  { label: "Grand Finalist", title: "Code Relay 2025", org: "IIT BBSR", year: "2025" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={item.title}
+                    className="rounded-xl p-5 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300 group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.22 + i * 0.07 }}
+                    whileHover={{ y: -3 }}
+                  >
+
+                    <span className="font-mono text-[14px] tracking-widest text-accent uppercase block mb-3 font-semibold">{item.label} · {item.year}</span>
+                    <p className="text-base font-semibold tracking-tight leading-snug mb-1 group-hover:text-foreground/70 transition-colors duration-200">{item.title}</p>
+                    <p className="text-xs text-muted-foreground font-mono">{item.org}</p>
+                  </motion.div>
+                ))}
+              </div>
+
+            </div>
           </section>
 
           {/* Contact Section */}

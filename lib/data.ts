@@ -2,22 +2,31 @@
 
 export const projects = [
   {
-    title: "SwarajDesk: Civic engagement and resolution system",
+    title: "Swaraj Desk: Intelligent Civic Operations Platform",
     description: "A platform for citizens to report and track civic issues with government resolution tracking",
-    tags: ["Next.js", "TailwindCSS", "Capacitor.js", "Bun", "Express", "Prisma", "PostgreSQL", "Redis", "Pub/Sub", "S3", "Docker", "Kubernetes", "ArgoCD", "CI/CD"],
-    image: "https://sih-swaraj.s3.ap-south-2.amazonaws.com/public-media/Screenshot+From+2025-12-18+10-17-55.png",
-    year: "2025",
-    liveUrl: "https://sih-user-fe-sd.adityahota.online/",
-    githubUrl: "https://github.com/theogaditya/sih-swarajdesk-2025.git",
+    tags: ["Next.js", "Bun", "Express", "Prisma", "PostgreSQL", "Redis", "Pub/Sub", "LangChain", "WebSockets", "Kubernetes", "CI/CD"],
+    image: "/swarajUser.png",
+    year: "2026",
+    liveUrl: "https://gsc-user-fe.abhasbehera.in/",
+    githubUrl: "https://github.com/theogaditya/GSC-2026-Primeagen",
   },
   {
     title: "SwarajDesk: Admin Portal",
     description: "Administrative dashboard for managing civic complaints and government responses",
-    tags: ["Next.js", "TailwindCSS", "Capacitor.js", "Bun", "Express", "Prisma", "PostgreSQL", "Redis", "S3", "Docker", "Kubernetes", "ArgoCD", "CI/CD"],
-    image: "https://sih-swaraj.s3.ap-south-2.amazonaws.com/public-media/Screenshot+From+2025-12-18+10-22-25.png",
+    tags: ["Next.js", "Bun", "Express", "Prisma", "PostgreSQL", "Redis", "Kubernetes", "ArgoCD", "CI/CD"],
+    image: "/swarajAdmin.png",
+    year: "2026",
+    liveUrl: "https://gsc-admin-fe.abhasbehera.in/",
+    githubUrl: "https://github.com/theogaditya/GSC-2026-Primeagen",
+  },
+  {
+    title: "BlinkPay: Wallet and Payments Platform",
+    description: "digital wallet and payments platform with secure peer-to-peer transfers, simulated on-ramp/off-ramp flows",
+    tags: ["Next.js", "Bun", "Express", "Prisma", "PostgreSQL", "CI/CD"],
+    image: "/2026-05-15_20-43.png",
     year: "2025",
-    liveUrl: "https://sih-admin-fe-sd.adityahota.online/",
-    githubUrl: "https://github.com/theogaditya/sih-swarajdesk-2025.git",
+    liveUrl: "https://blinkpay.avenis999.online/",
+    githubUrl: "https://github.com/theogaditya/blinkpay",
   },
   {
     title: "Inkwell: A dev first blogging platform",
@@ -33,7 +42,7 @@ export const projects = [
 export const technologies = [
   {
     category: "Languages",
-    skills: ["TypeScript", "JavaScript", "C", "C++"],
+    skills: ["TypeScript", "JavaScript", "Python"],
   },
   {
     category: "Frontend",
@@ -41,7 +50,7 @@ export const technologies = [
   },
   {
     category: "Backend",
-    skills: ["Node.js", "Bun", "Express", "WebSocket", "Pub/Sub", "Redis", "gRPC"],
+    skills: ["Node.js", "Bun", "Express", "WebSocket", "Pub/Sub", "Redis", "gRPC", "LangChain"],
   },
   {
     category: "Cloud & DevOps",
@@ -53,7 +62,7 @@ export const technologies = [
   },
   {
     category: "Others",
-    skills: ["Git", "GitHub", "Turborepo", "Linux", "Unit Testing", "Integration Testing"],
+    skills: ["Git", "GitHub", "Linux", "Unit Testing", "Integration Testing"],
   },
 ];
 
