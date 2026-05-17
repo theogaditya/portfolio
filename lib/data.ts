@@ -20,6 +20,15 @@ export const projects = [
     githubUrl: "https://github.com/theogaditya/GSC-2026-Primeagen",
   },
   {
+    title: "PixalPlot: AI Powered Application Generation Platform",
+    description: "AI powered browser based development environment, enabling users to generate and live preview full stack applications from natural language prompts",
+    tags: ["Next.js", "Bun", "Express", "Open AI", "Prisma", "PostgreSQL", "WebSockets", "CI/CD"],
+    image: "/2026-05-17_16-43.png",
+    year: "2025",
+    liveUrl: "https://pixelploy.avenis999.online/",
+    githubUrl: "https://github.com/theogaditya/PixalPlot",
+  },
+  {
     title: "BlinkPay: Wallet and Payments Platform",
     description: "digital wallet and payments platform with secure peer-to-peer transfers, simulated on-ramp/off-ramp flows",
     tags: ["Next.js", "Bun", "Express", "Prisma", "PostgreSQL", "CI/CD"],

@@ -20,6 +20,9 @@ import { BlurIn } from "@/components/animated-text"
 import { ScrollProgress } from "@/components/scroll-progress"
 import { FloatingShapes, MouseFollower, Sparkles } from "@/components/effects"
 
+
+import AchievementsSection from "./test"
+
 export default function Page() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [connectModalOpen, setConnectModalOpen] = useState(false);
@@ -414,8 +417,8 @@ export default function Page() {
                         </div>
 
                         <div className="text-muted-foreground leading-relaxed text-sm space-y-2 mt-2">
-                          <p>• Contributed to productionizing a hackathon-winning prototype during a 6-week internship with the Batoi team.</p>
-                          <p>• Integrated Batoi Insight workflows into the platform, including survey configuration, report generation, and response management optimization.</p>
+                          <p>Contributed to productionizing a hackathon-winning prototype during a 6-week internship with the Batoi team.</p>
+                          <p>Integrated Batoi Insight workflows into the platform, including survey configuration, report generation, and response management optimization.</p>
                         </div>
 
                         <StaggerContainer className="flex flex-wrap gap-2 mt-4" staggerDelay={0.05}>
