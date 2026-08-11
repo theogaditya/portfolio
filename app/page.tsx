@@ -102,7 +102,7 @@ export default function Page() {
               <ThemeToggle />
 
               {/* Resume button with PDF link */}
-              <Link href="/FInal.pdf" target="_blank" rel="noopener noreferrer">
+              <Link href="/newResume.pdf" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline">
                   Resume
                 </Button>
