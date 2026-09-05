@@ -612,19 +612,19 @@ export default function Page() {
           <AnimatedDivider />
 
           {/* Achievements Section */}
-          <section id="achievements" className="relative py-18 overflow-hidden md:py-26">
+          <section id="achievements" className="relative py-12 overflow-hidden md:py-20">
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="px-8 md:px-12 mb-12"
+              className="px-4 md:px-12 mb-8 md:mb-12"
             >
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center">Achievements</h2>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-tighter sm:text-3xl md:text-5xl text-center">Achievements</h2>
             </motion.div>
 
-            <div className="px-8 md:px-12 space-y-4">
+            <div className="px-4 md:px-12 space-y-4 md:space-y-6">
 
               {/* ── Patent card ── */}
               <motion.a
@@ -638,19 +638,19 @@ export default function Page() {
                 transition={{ duration: 0.7, delay: 0.0 }}
                 whileHover={{ y: -4 }}
               >
-                <div className="rounded-2xl p-7 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1 min-w-0">
-                      <span className="font-mono text-[15px] tracking-widest text-accent uppercase block mb-3 font-semibold">Indian Patent · No. 202631019043 · 2026</span>
-                      <h3 className="text-lg md:text-xl font-bold tracking-tight leading-snug mb-3">
+                <div className="rounded-xl md:rounded-2xl p-4 md:p-7 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300">
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-3 sm:gap-4">
+                    <div className="flex-1 min-w-0 w-full">
+                      <span className="font-mono text-[11px] md:text-[15px] tracking-widest text-accent uppercase block mb-2 md:mb-3 font-semibold">Indian Patent · No. 202631019043 · 2026</span>
+                      <h3 className="text-base md:text-xl font-bold tracking-tight leading-snug mb-2 md:mb-3">
                         Offline-First AI Issue Reporting System
                       </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xl">
+                      <p className="text-xs md:text-sm text-muted-foreground leading-relaxed mb-3 md:mb-5 max-w-xl">
                         An offline-first, AI-enabled system for decentralized issue reporting, automated routing, and immutable resolution tracking.
                       </p>
                     </div>
-                    <div className="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-foreground/20 text-muted-foreground text-xs font-mono group-hover:border-accent/50 group-hover:text-accent transition-all duration-200 whitespace-nowrap">
-                      <FileText className="w-3.5 h-3.5" />
+                    <div className="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 md:px-3 md:py-1.5 rounded-lg border border-foreground/20 text-muted-foreground text-[10px] md:text-xs font-mono group-hover:border-accent/50 group-hover:text-accent transition-all duration-200 whitespace-nowrap">
+                      <FileText className="w-3 h-3 md:w-3.5 md:h-3.5" />
                       View PDF
                     </div>
                   </div>
@@ -659,7 +659,7 @@ export default function Page() {
 
               {/* ── Hackathons subheading ── */}
               <motion.p
-                className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase pt-4 pb-1"
+                className="font-mono text-[10px] md:text-[11px] tracking-widest text-muted-foreground uppercase pt-3 md:pt-4 pb-1"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
@@ -669,7 +669,7 @@ export default function Page() {
               </motion.p>
 
               {/* ── Hackathon bento grid ── */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                 {[
                   { label: "Grand Finalist", title: "Google Solution Challenge 2026", org: "Top 106 out of 85,000 teams", year: "2026" },
                   { label: "Winner", title: "Code Relay 2026", org: "IIT BBSR", year: "2026" },
@@ -679,7 +679,7 @@ export default function Page() {
                 ].map((item, i) => (
                   <motion.div
                     key={item.title}
-                    className="rounded-xl p-5 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300 group"
+                    className="rounded-lg md:rounded-xl p-4 md:p-5 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300 group"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -687,9 +687,9 @@ export default function Page() {
                     whileHover={{ y: -3 }}
                   >
 
-                    <span className="font-mono text-[14px] tracking-widest text-accent uppercase block mb-3 font-semibold">{item.label} · {item.year}</span>
-                    <p className="text-base font-semibold tracking-tight leading-snug mb-1 group-hover:text-foreground/70 transition-colors duration-200">{item.title}</p>
-                    <p className="text-xs text-muted-foreground font-mono">{item.org}</p>
+                    <span className="font-mono text-[11px] md:text-[14px] tracking-widest text-accent uppercase block mb-2 md:mb-3 font-semibold">{item.label} · {item.year}</span>
+                    <p className="text-sm md:text-base font-semibold tracking-tight leading-snug mb-1 group-hover:text-foreground/70 transition-colors duration-200">{item.title}</p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground font-mono">{item.org}</p>
                   </motion.div>
                 ))}
               </div>
