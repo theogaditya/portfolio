@@ -236,11 +236,11 @@
 }
 
 .animate-marquee-left {
-  animation: marquee-left 50s linear infinite;
+  animation: marquee-left 60s linear infinite;
 }
 
 .animate-marquee-right {
-  animation: marquee-right 50s linear infinite;
+  animation: marquee-right 60s linear infinite;
 }
 
 /* Gradient text animation */
@@ -714,4 +714,49 @@ body.retro {
 /* Skill hover animation */
 .skill-hover:hover {
   opacity: 0.8;
+}
+
+/* Performance optimizations - GPU acceleration for animations */
+@layer utilities {
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  .will-change-auto {
+    will-change: auto;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Hardware acceleration for common animated elements */
+motion.div,
+[motion],
+[data-animate] {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Optimize blur effects - use sparingly on mobile */
+@media (max-width: 768px) {
+  .blur-3xl {
+    filter: blur(48px);
+  }
+  
+  .blur-2xl {
+    filter: blur(32px);
+  }
 }

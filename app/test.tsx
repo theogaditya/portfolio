@@ -85,7 +85,8 @@ export default function AchievementsSection() {
           return (
             <motion.div key={`${achievement.title}-${achievement.event}`} variants={itemVariants}>
               <div className="relative group w-full h-full pt-4">
-                <div className="pointer-events-none absolute inset-0 z-0 overflow-visible">
+                {/* Certificate images - hidden on mobile, shown on desktop hover */}
+                <div className="pointer-events-none absolute inset-0 z-0 overflow-visible hidden md:block">
                   {achievement.images.map((src, index) => {
                     let transformClass = "";
                     const total = achievement.images.length;
@@ -109,18 +110,31 @@ export default function AchievementsSection() {
                   })}
                 </div>
 
-                <Card className={`relative z-10 h-full rounded-lg border-border/70 bg-card p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${achievement.glowClass}`}>
-                  <div className="mb-6 flex items-center justify-between gap-4">
-                    <span className={`flex h-11 w-11 items-center justify-center rounded-md ${achievement.iconBg} ${achievement.iconColor}`}>
-                      <Icon className="h-5 w-5" />
+                {/* Mobile: Click-to-view certificates modal overlay */}
+                <div className="md:hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 group-active:opacity-100 group-active:pointer-events-auto">
+                  <div className="relative w-full max-w-sm">
+                    <div className="grid gap-3">
+                      {achievement.images.map((src, index) => (
+                        <div key={src} className="relative h-48 w-full rounded-lg border border-border/60 bg-card overflow-hidden">
+                          <Image src={src} alt={`${achievement.title} Certificate ${index + 1}`} fill className="object-cover" />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <Card className={`relative z-10 h-full rounded-lg border-border/70 bg-card p-5 sm:p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl active:scale-[0.98] md:hover:scale-[1.02] ${achievement.glowClass}`}>
+                  <div className="mb-4 sm:mb-6 flex items-center justify-between gap-3 sm:gap-4">
+                    <span className={`flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-md ${achievement.iconBg} ${achievement.iconColor}`}>
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5" />
                     </span>
-                    <span className="rounded-md border border-border/70 px-2.5 py-1 text-xs font-medium text-muted-foreground">
+                    <span className="rounded-md border border-border/70 px-2 py-1 text-xs font-medium text-muted-foreground whitespace-nowrap">
                       {achievement.year}
                     </span>
                   </div>
-                  <h3 className="text-xl font-semibold">{achievement.title}</h3>
-                  <p className="mt-1 text-base font-medium text-foreground/70">{achievement.event}</p>
-                  <p className="mt-4 text-base leading-7 text-muted-foreground">
+                  <h3 className="text-lg sm:text-xl font-semibold">{achievement.title}</h3>
+                  <p className="mt-1 text-sm sm:text-base font-medium text-foreground/70">{achievement.event}</p>
+                  <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
                     {achievement.description}
                   </p>
                 </Card>

@@ -5,14 +5,14 @@ import { motion, useScroll, useSpring } from "framer-motion"
 export function ScrollProgress() {
   const { scrollYProgress } = useScroll()
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 120,
+    damping: 25,
     restDelta: 0.001
   })
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-accent z-[100] origin-left"
+      className="fixed top-0 left-0 right-0 h-0.5 bg-accent z-[100] origin-left will-change-transform"
       style={{ scaleX }}
     />
   )
