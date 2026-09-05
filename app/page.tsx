@@ -337,14 +337,18 @@ export default function Page() {
                 <StaggerContainer className="w-full md:w-2/3 space-y-4 text-lg" staggerDelay={0.15}>
                   <StaggerItem>
                     <p>
-                      I&apos;m Aditya, a Computer Science and Engineering undergraduate specializing in full-stack development, cloud computing, and distributed systems. I have co-authored research on Kubernetes autoscaling for stateful workloads and hold a published Indian patent. I also lead web development initiatives at GDG on campus. Winner and grand finalist in multiple national and state-level hackathons. Passionate about building scalable systems that solve real-world problems.
+                      I&apos;m Aditya, a Computer Science and Engineering undergraduate specializing in full-stack development, cloud computing, and distributed systems.
                     </p>
-                  </StaggerItem>
-                  <StaggerItem>
+                    <br></br>
                     <p>
-                      
+                      Co-authored research on Kubernetes autoscaling for stateful workloads. I also lead web development initiatives at GDG (Google Developer Groups) on campus.
+                    </p>
+                    <br></br>
+                    <p>
+                      Winner and grand finalist in multiple national and state-level hackathons. Passionate about building scalable systems that solve real-world problems.
                     </p>
                   </StaggerItem>
+                  
                 </StaggerContainer>
               </div>
             </AnimatedSection>
