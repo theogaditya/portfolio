@@ -4,11 +4,11 @@ import type React from "react"
 
 import { useState, useRef } from "react"
 import { motion, useMotionValue, useSpring } from "framer-motion"
-import { Github, ExternalLink } from "lucide-react"
+import { Github, ExternalLink, ChevronDown, ChevronUp } from "lucide-react"
 import { projects as projectsData } from "@/lib/data"
 
 // Map the shared data to the format needed for this component
-const projects = projectsData.map(p => ({
+const allProjects = projectsData.map(p => ({
   title: p.title,
   tags: p.tags,
   image: p.image,
@@ -17,9 +17,12 @@ const projects = projectsData.map(p => ({
   githubUrl: p.githubUrl,
 }))
 
+const INITIAL_PROJECTS_COUNT = 3
+
 export function Works() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
   const [hasMouseMoved, setHasMouseMoved] = useState(false)
+  const [showAllProjects, setShowAllProjects] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
   const mouseX = useMotionValue(0)
@@ -33,6 +36,10 @@ export function Works() {
     mouseX.set(e.clientX)
     mouseY.set(e.clientY)
   }
+
+  // Show only first 3 projects initially, unless showAllProjects is true
+  const visibleProjects = showAllProjects ? allProjects : allProjects.slice(0, INITIAL_PROJECTS_COUNT)
+  const hasMoreProjects = allProjects.length > INITIAL_PROJECTS_COUNT
 
   return (
     <section className="relative py-18 overflow-hidden md:py-26">
@@ -49,79 +56,84 @@ export function Works() {
 
       {/* Projects List */}
       <div ref={containerRef} onMouseMove={handleMouseMove} className="relative px-8 md:px-12">
-        {projects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
-            className="relative border-t border-foreground/10 py-8 md:py-12"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-          >
-            <div className="group flex flex-col md:flex-row md:items-center justify-between gap-4">
-              {/* Year */}
-              <span className="font-mono text-xs text-muted-foreground tracking-[0.3em] order-1 md:order-0">
-                {project.year}
-              </span>
+        {visibleProjects.map((project, index) => {
+          // Calculate the actual index in allProjects for hover functionality
+          const actualIndex = allProjects.findIndex(p => p.title === project.title)
+          
+          return (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="relative border-t border-foreground/10 py-8 md:py-12"
+              onMouseEnter={() => setHoveredIndex(actualIndex)}
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              <div className="group flex flex-col md:flex-row md:items-center justify-between gap-4">
+                {/* Year */}
+                <span className="font-mono text-xs text-muted-foreground tracking-[0.3em] order-1 md:order-0">
+                  {project.year}
+                </span>
 
-              {/* Title - clickable to live demo */}
-              <motion.a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                data-cursor-hover
-                className="font-sans text-xl md:text-2xl lg:text-4xl font-semibold tracking-tight text-foreground/90 hover:text-foreground/70 active:text-foreground/60 transition-colors duration-300 flex-1 flex items-center gap-3"
-                animate={{
-                  x: hoveredIndex === index ? 20 : 0,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              >
-                {project.title}
-                {/* <ExternalLink className="w-4 h-4 md:w-5 md:h-5 opacity-50 group-hover:opacity-100 transition-opacity" /> */}
-              </motion.a>
-
-              {/* Actions: GitHub button and Live link */}
-              <div className="flex flex-col gap-5 order-2 md:order-0">
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-cursor-hover
-                  className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/70 active:bg-foreground/70 transition-all duration-300"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Github className="w-4 h-4" />
-                  <span className="text-[11px] tracking-[0.15em]">CODE</span>
-                </a>
-                <a
+                {/* Title - clickable to live demo */}
+                <motion.a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor-hover
-                  className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/80 active:bg-foreground/70 transition-all duration-300"
-                  onClick={(e) => e.stopPropagation()}
+                  className="font-sans text-xl md:text-2xl lg:text-4xl font-semibold tracking-tight text-foreground/90 hover:text-foreground/70 active:text-foreground/60 transition-colors duration-300 flex-1 flex items-center gap-3"
+                  animate={{
+                    x: hoveredIndex === actualIndex ? 20 : 0,
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  <ExternalLink className="w-4 h-4" />
-                  <span className="text-[11px] tracking-[0.15em]">LIVE</span>
-                </a>
-              </div>
+                  {project.title}
+                  {/* <ExternalLink className="w-4 h-4 md:w-5 md:h-5 opacity-50 group-hover:opacity-100 transition-opacity" /> */}
+                </motion.a>
 
-              {/* Tags */}
-              <div className="flex gap-2 flex-wrap order-3 md:order-0 max-w-85">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="font-mono text-[10px] tracking-[0.2em] px-3 py-1 border border-foreground/20 rounded-full text-muted-foreground"
+                {/* Actions: GitHub button and Live link */}
+                <div className="flex flex-col gap-5 order-2 md:order-0">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-hover
+                    className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/70 active:bg-foreground/70 transition-all duration-300"
+                    onClick={(e) => e.stopPropagation()}
                   >
-                    {tag}
-                  </span>
-                ))}
+                    <Github className="w-4 h-4" />
+                    <span className="text-[11px] tracking-[0.15em]">CODE</span>
+                  </a>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-cursor-hover
+                    className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/80 active:bg-foreground/70 transition-all duration-300"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    <span className="text-[11px] tracking-[0.15em]">LIVE</span>
+                  </a>
+                </div>
+
+                {/* Tags */}
+                <div className="flex gap-2 flex-wrap order-3 md:order-0 max-w-85">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="font-mono text-[10px] tracking-[0.2em] px-3 py-1 border border-foreground/20 rounded-full text-muted-foreground"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          )
+        })}
 
         {/* Floating Image - Desktop only, only show after mouse has moved */}
         <motion.div
@@ -140,9 +152,11 @@ export function Works() {
         >
           {hoveredIndex !== null && (
             <motion.img
-              src={projects[hoveredIndex].image}
-              alt={projects[hoveredIndex].title}
+              src={allProjects[hoveredIndex].image}
+              alt={allProjects[hoveredIndex].title}
               className="w-full h-full object-cover"
+              loading="eager"
+              decoding="sync"
               initial={{ scale: 1.2 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.4 }}
@@ -155,6 +169,30 @@ export function Works() {
           <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
         </motion.div>
       </div>
+
+      {/* View More / View Less Button */}
+      {hasMoreProjects && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mt-8"
+        >
+          <button
+            onClick={() => setShowAllProjects(!showAllProjects)}
+            className="flex items-center gap-2 px-6 py-3 bg-foreground/10 hover:bg-foreground/20 text-foreground rounded-full font-medium transition-all duration-300"
+            data-cursor-hover
+          >
+            <span>{showAllProjects ? "View Less" : "View More Projects"}</span>
+            {showAllProjects ? (
+              <ChevronUp className="w-4 h-4" />
+            ) : (
+              <ChevronDown className="w-4 h-4" />
+            )}
+          </button>
+        </motion.div>
+      )}
 
       {/* Bottom Border */}
       <motion.div
