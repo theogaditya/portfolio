@@ -59,7 +59,7 @@ export function TechMarquee() {
   return (
     <section className="relative py-0 overflow-hidden md:py-0">
       {/* Marquee Rows */}
-      <div className="space-y-4">
+      <div className="space-y-4 will-change-transform">
         <MarqueeRow items={techItems} direction="left" />
         <MarqueeRow items={concepts} direction="right" />
       </div>

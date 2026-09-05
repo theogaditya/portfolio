@@ -13,8 +13,8 @@ export function AnimatedSection({ children, className = "", delay = 0 }: Animate
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
+      viewport={{ once: true, margin: "-50px", amount: 0.2 }}
+      transition={{ duration: 0.6, delay, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       {children}
@@ -73,7 +73,7 @@ export function StaggerContainer({
     <motion.div
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: "-50px", amount: 0.2 }}
       variants={{
         hidden: { opacity: 0 },
         visible: {
@@ -127,8 +127,8 @@ export function ParallaxSection({
     <motion.div
       initial={{ y: offset }}
       whileInView={{ y: 0 }}
-      viewport={{ once: true, margin: "-200px" }}
-      transition={{ duration: 1, ease: [0.25, 0.46, 0.45, 0.94] }}
+      viewport={{ once: true, margin: "-100px", amount: 0.3 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
       className={className}
     >
       {children}

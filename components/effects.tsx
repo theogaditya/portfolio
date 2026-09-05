@@ -11,7 +11,7 @@ interface Sparkle {
   delay: number
 }
 
-export function Sparkles({ count = 50 }: { count?: number }) {
+export function Sparkles({ count = 30 }: { count?: number }) {
   const [sparkles, setSparkles] = useState<Sparkle[]>([])
 
   useEffect(() => {
@@ -30,7 +30,7 @@ export function Sparkles({ count = 50 }: { count?: number }) {
       {sparkles.map((sparkle) => (
         <motion.div
           key={sparkle.id}
-          className="absolute rounded-full bg-accent/60"
+          className="absolute rounded-full bg-accent/40"
           style={{
             left: `${sparkle.x}%`,
             top: `${sparkle.y}%`,
@@ -42,7 +42,7 @@ export function Sparkles({ count = 50 }: { count?: number }) {
             scale: [0, 1, 0],
           }}
           transition={{
-            duration: 2 + Math.random() * 2,
+            duration: 2.5 + Math.random() * 2,
             repeat: Infinity,
             delay: sparkle.delay,
             ease: "easeInOut",
@@ -60,26 +60,13 @@ interface FloatingShapeProps {
 export function FloatingShapes({ className }: FloatingShapeProps) {
   return (
     <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-      {/* Floating circles */}
+      {/* Floating circles - reduced size and opacity for better performance */}
       <motion.div
-        className="absolute w-72 h-72 rounded-full bg-accent/5 blur-3xl"
+        className="absolute w-48 h-48 rounded-full bg-accent/3 blur-2xl"
         style={{ left: "10%", top: "20%" }}
         animate={{
-          x: [0, 50, 0],
-          y: [0, -30, 0],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div
-        className="absolute w-96 h-96 rounded-full bg-primary/5 blur-3xl"
-        style={{ right: "10%", bottom: "20%" }}
-        animate={{
-          x: [0, -30, 0],
-          y: [0, 50, 0],
+          x: [0, 30, 0],
+          y: [0, -20, 0],
         }}
         transition={{
           duration: 25,
@@ -88,14 +75,27 @@ export function FloatingShapes({ className }: FloatingShapeProps) {
         }}
       />
       <motion.div
-        className="absolute w-64 h-64 rounded-full bg-accent/3 blur-2xl"
-        style={{ left: "50%", top: "10%" }}
+        className="absolute w-64 h-64 rounded-full bg-primary/3 blur-2xl"
+        style={{ right: "10%", bottom: "20%" }}
         animate={{
-          x: [0, 20, -20, 0],
-          y: [0, 40, 0],
+          x: [0, -20, 0],
+          y: [0, 30, 0],
         }}
         transition={{
-          duration: 15,
+          duration: 30,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div
+        className="absolute w-40 h-40 rounded-full bg-accent/2 blur-xl"
+        style={{ left: "50%", top: "10%" }}
+        animate={{
+          x: [0, 15, -15, 0],
+          y: [0, 25, 0],
+        }}
+        transition={{
+          duration: 20,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -191,12 +191,22 @@ export function MouseFollower() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
+    let rafId: number
+    
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
+      if (rafId) return // Skip if already scheduled
+      
+      rafId = requestAnimationFrame(() => {
+        setMousePosition({ x: e.clientX, y: e.clientY })
+        rafId = 0
+      })
     }
 
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
+    window.addEventListener("mousemove", handleMouseMove, { passive: true })
+    return () => {
+      if (rafId) cancelAnimationFrame(rafId)
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
   }, [])
 
   return (
@@ -208,8 +218,9 @@ export function MouseFollower() {
       }}
       transition={{
         type: "spring",
-        stiffness: 30,
-        damping: 30,
+        stiffness: 50,
+        damping: 40,
+        mass: 1,
       }}
     />
   )

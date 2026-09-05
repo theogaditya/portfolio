@@ -337,13 +337,12 @@ export default function Page() {
                 <StaggerContainer className="w-full md:w-2/3 space-y-4 text-lg" staggerDelay={0.15}>
                   <StaggerItem>
                     <p>
-                      I&apos;m Aditya, a Full Stack Engineer focused on building systems that scale from prototype to production.
-                      I approach software with a strong emphasis on clean architecture and reliability across the entire stack from frontend to infrastructure.
+                      I&apos;m Aditya, a Computer Science and Engineering undergraduate specializing in full-stack development, cloud computing, and distributed systems. I co-authored research on Kubernetes autoscaling for stateful workloads and hold a published Indian patent. I also lead web development initiatives at GDG on campus.
                     </p>
                   </StaggerItem>
                   <StaggerItem>
                     <p>
-                      Beyond development, I actively explore emerging technologies compete in hackathons and contribute back to the community.
+                      I&apos;m a winner and grand finalist in multiple national and state-level hackathons, passionate about building scalable systems that solve real-world problems.
                     </p>
                   </StaggerItem>
                 </StaggerContainer>
@@ -417,8 +416,8 @@ export default function Page() {
                         </div>
 
                         <div className="text-muted-foreground leading-relaxed text-sm space-y-2 mt-2">
-                          <p>Contributed to productionizing a hackathon-winning prototype during a 6-week internship with the Batoi team.</p>
-                          <p>Integrated Batoi Insight workflows into the platform, including survey configuration, report generation, and response management optimization.</p>
+                          <p>Productionized and deployed a full-stack application built during a Hackathon winning submission, integrating Batoi Insight workflows into core platform services.</p>
+                          <p>Implemented survey configuration, report generation, and response management features while collaborating with the Batoi team.</p>
                         </div>
 
                         <StaggerContainer className="flex flex-wrap gap-2 mt-4" staggerDelay={0.05}>
@@ -658,24 +657,6 @@ export default function Page() {
                 </div>
               </motion.a>
 
-              {/* ── Research Paper card ── */}
-              <motion.div
-                className="rounded-2xl p-7 border border-foreground/10 hover:border-foreground/20 bg-foreground/[0.02] hover:bg-foreground/[0.04] backdrop-blur-md transition-all duration-300"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: 0.1 }}
-                whileHover={{ y: -4 }}
-              >
-                <span className="font-mono text-[15px] tracking-widest text-accent uppercase block mb-3 font-semibold">Research Paper · Under Review</span>
-                <h3 className="text-lg md:text-xl font-bold tracking-tight leading-snug mb-3">
-                  Connection-Aware Autoscaling for Stateful Workloads in Kubernetes
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-5 max-w-xl">
-                  Co-authored research on a custom controller resolving HPA scale-up blindness, connection imbalance, and violent disconnections in stateful MQTT workloads.
-                </p>
-              </motion.div>
-
               {/* ── Hackathons subheading ── */}
               <motion.p
                 className="font-mono text-[11px] tracking-widest text-muted-foreground uppercase pt-4 pb-1"
@@ -688,8 +669,9 @@ export default function Page() {
               </motion.p>
 
               {/* ── Hackathon bento grid ── */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
+                  { label: "Grand Finalist", title: "Google Solution Challenge 2026", org: "Top 106 out of 85,000 teams worldwide", year: "2026" },
                   { label: "Winner", title: "Code Relay 2026", org: "IIT BBSR", year: "2026" },
                   { label: "Winner", title: "Srusti Tech Hack 2025", org: "Srusti Academy of Management and Technology", year: "2025" },
                   { label: "Grand Finalist", title: "Smart India Hackathon 2025", org: "Govt. of India", year: "2025" },
