@@ -337,12 +337,12 @@ export default function Page() {
                 <StaggerContainer className="w-full md:w-2/3 space-y-4 text-lg" staggerDelay={0.15}>
                   <StaggerItem>
                     <p>
-                      I&apos;m Aditya, a Computer Science and Engineering undergraduate specializing in full-stack development, cloud computing, and distributed systems. I co-authored research on Kubernetes autoscaling for stateful workloads and hold a published Indian patent. I also lead web development initiatives at GDG on campus.
+                      I&apos;m Aditya, a Computer Science and Engineering undergraduate specializing in full-stack development, cloud computing, and distributed systems. I have co-authored research on Kubernetes autoscaling for stateful workloads and hold a published Indian patent. I also lead web development initiatives at GDG on campus. Winner and grand finalist in multiple national and state-level hackathons. Passionate about building scalable systems that solve real-world problems.
                     </p>
                   </StaggerItem>
                   <StaggerItem>
                     <p>
-                      I&apos;m a winner and grand finalist in multiple national and state-level hackathons, passionate about building scalable systems that solve real-world problems.
+                      
                     </p>
                   </StaggerItem>
                 </StaggerContainer>
@@ -671,10 +671,10 @@ export default function Page() {
               {/* ── Hackathon bento grid ── */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[
-                  { label: "Grand Finalist", title: "Google Solution Challenge 2026", org: "Top 106 out of 85,000 teams worldwide", year: "2026" },
+                  { label: "Grand Finalist", title: "Google Solution Challenge 2026", org: "Top 106 out of 85,000 teams", year: "2026" },
                   { label: "Winner", title: "Code Relay 2026", org: "IIT BBSR", year: "2026" },
                   { label: "Winner", title: "Srusti Tech Hack 2025", org: "Srusti Academy of Management and Technology", year: "2025" },
-                  { label: "Grand Finalist", title: "Smart India Hackathon 2025", org: "Govt. of India", year: "2025" },
+                  { label: "Grand Finalist", title: "Smart India Hackathon 2025", org: "Govt. of India and IIT ISM DHN", year: "2025" },
                   { label: "Grand Finalist", title: "Code Relay 2025", org: "IIT BBSR", year: "2025" },
                 ].map((item, i) => (
                   <motion.div
