@@ -181,14 +181,14 @@ export function Works() {
         >
           <button
             onClick={() => setShowAllProjects(!showAllProjects)}
-            className="flex items-center gap-2 px-6 py-3 bg-foreground/10 hover:bg-foreground/20 text-foreground rounded-full font-medium transition-all duration-300"
+            className="flex items-center gap-2 px-5 py-2 bg-foreground/10 hover:bg-foreground/20 text-foreground rounded-full font-medium transition-all duration-300"
             data-cursor-hover
           >
             <span>{showAllProjects ? "View Less" : "View More Projects"}</span>
             {showAllProjects ? (
-              <ChevronUp className="w-4 h-4" />
+              <ChevronUp className="w-3 h-3" />
             ) : (
-              <ChevronDown className="w-4 h-4" />
+              <ChevronDown className="w-3 h-3" />
             )}
           </button>
         </motion.div>
