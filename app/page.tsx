@@ -329,6 +329,7 @@ export default function Page() {
                       src="https://pub-cfcd623b266645fc8425f95678d192d7.r2.dev/pfp.png"
                       alt="Aditya Hota"
                       fill
+                      sizes="(min-width: 768px) 256px, 100vw"
                       className="object-cover"
                       style={{ filter: 'none' }}
                     />
@@ -748,4 +749,3 @@ export default function Page() {
     </div>
   )
 }
-

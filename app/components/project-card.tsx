@@ -50,6 +50,7 @@ export default function ProjectCard({
             src={image || "/placeholder.svg"}
             alt={title}
             fill
+            sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
             className="object-cover transition-all duration-500"
             style={{
               transform: isHovered ? "scale(1.05)" : "scale(1)",
