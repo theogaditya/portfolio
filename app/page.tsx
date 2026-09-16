@@ -102,11 +102,11 @@ export default function Page() {
               <ThemeToggle />
 
               {/* Resume button with PDF link */}
-              <Link href="/newResume.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/newResume.pdf" target="_blank" rel="noopener noreferrer" download="Resume.pdf">
                 <Button variant="outline">
                   Resume
                 </Button>
-              </Link>
+              </a>
 
               {/* Mobile menu toggle */}
               <Button
@@ -165,6 +165,22 @@ export default function Page() {
                   >
                     Contact
                   </motion.button>
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.4 }}
+                  >
+                    <a
+                      href="/newResume.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download="Resume.pdf"
+                      className="block transition-colors hover:text-foreground/80 hover:translate-x-2 duration-200"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Resume
+                    </a>
+                  </motion.div>
                 </nav>
               </motion.div>
             )}
@@ -636,6 +652,7 @@ export default function Page() {
                 href="/ViewPDF.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
+                download="Patent-202631019043.pdf"
                 className="block group"
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
