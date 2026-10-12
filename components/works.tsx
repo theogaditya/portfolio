@@ -95,17 +95,19 @@ export function Works() {
 
                 {/* Actions: GitHub button and Live link */}
                 <div className="flex flex-col gap-5 order-2 md:order-0">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-cursor-hover
-                    className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/70 active:bg-foreground/70 transition-all duration-300"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <Github className="w-4 h-4" />
-                    <span className="text-[11px] tracking-[0.15em]">CODE</span>
-                  </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor-hover
+                      className="flex items-center gap-2 px-4 py-2 bg-foreground/85 text-background rounded-full font-bold hover:bg-foreground/70 active:bg-foreground/70 transition-all duration-300"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <Github className="w-4 h-4" />
+                      <span className="text-[11px] tracking-[0.15em]">CODE</span>
+                    </a>
+                  )}
                   <a
                     href={project.liveUrl}
                     target="_blank"

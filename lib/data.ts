@@ -2,6 +2,14 @@
 
 export const projects = [
   {
+    title: "Nook: Private Zero-Knowledge Vault",
+    description: "A private vault with passkey sign-in, a vault passphrase, and zero-knowledge architecture.",
+    tags: ["TypeScript", "Vite", "Cloudflare Workers", "D1", "R2", "WebCrypto", "Argon2id", "WebAuthn"],
+    image: "/nook.png",
+    year: "2026",
+    liveUrl: "https://vault.adityahota99.workers.dev/",
+  },
+  {
     title: "Swaraj Desk: Intelligent Civic Operations Platform",
     description: "A platform for citizens to report and track civic issues with government resolution tracking",
     tags: ["Next.js", "Bun", "Express", "Prisma", "PostgreSQL", "Redis", "Pub/Sub", "LangChain", "WebSockets", "Kubernetes", "CI/CD"],

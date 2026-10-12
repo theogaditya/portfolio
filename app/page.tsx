@@ -437,8 +437,8 @@ export default function Page() {
                         </div>
 
                         <div className="text-muted-foreground leading-relaxed text-sm space-y-2 mt-2">
-                          <p>Productionized and deployed a full-stack application built during a Hackathon winning submission, integrating Batoi Insight workflows into core platform services.</p>
-                          <p>Implemented survey configuration, report generation, and response management features while collaborating with the Batoi team.</p>
+                          <p>Productionized and deployed a hackathon-winning full-stack application built during the Srusti Tech Hack Hackathon, integrating Batoi Insight workflows into core platform services.</p>
+                          <p>Implemented and configured 4 recurring surveys with single and multi-stage forms, collecting user responses at scheduled intervals and generating automated reports with 8+ metrics for administrators to monitor survey results.</p>
                         </div>
 
                         <StaggerContainer className="flex flex-wrap gap-2 mt-4" staggerDelay={0.05}>
@@ -503,7 +503,7 @@ export default function Page() {
                       transition={{ duration: 0.6, delay: 0.5 }}
                     >
                       <span className="font-mono text-sm text-muted-foreground tracking-wider">
-                        OCTOBER 2025 - PRESENT
+                        OCTOBER 2025 - SEPTEMBER 2026
                       </span>
 
                     </motion.div>
@@ -530,7 +530,7 @@ export default function Page() {
                   >
                     {/* Mobile date */}
                     <span className="md:hidden font-mono text-xs text-muted-foreground tracking-wider mb-2 block">
-                      OCTOBER 2025 — PRESENT
+                      OCTOBER 2025 — SEPTEMBER 2026
                     </span>
 
                     <GlowingBorder>
@@ -565,9 +565,10 @@ export default function Page() {
                           </motion.div>
                         </div>
 
-                        <p className="text-muted-foreground leading-relaxed">
-                          Contributing to the Web Development domain at GDG and mentoring fellow developers.
-                          Conducted multiple hands-on workshops.</p>
+                        <div className="text-muted-foreground leading-relaxed">
+                          <p>Led campus web development initiatives, helping students strengthen practical development skills and encouraging collaborative project building.</p>
+                          <p className="mt-2">Organized and supported technical workshops and developer community sessions, engaging 300+ students across multiple sessions through hands-on learning, problem-solving, and knowledge sharing.</p>
+                        </div>
 
                         <StaggerContainer className="flex flex-wrap gap-2 mt-4" staggerDelay={0.05}>
                           {["Leadership", "Mentoring", "Workshops", "Web Development"].map((tag) => (

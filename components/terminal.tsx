@@ -215,11 +215,13 @@ export function Terminal() {
                     Live: {project.liveUrl}
                   </a>
                 </p>
-                <p className="ml-4">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-[#a371f7] hover:underline cursor-pointer">
-                    Code: {project.githubUrl}
-                  </a>
-                </p>
+                {project.githubUrl && (
+                  <p className="ml-4">
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-[#a371f7] hover:underline cursor-pointer">
+                      Code: {project.githubUrl}
+                    </a>
+                  </p>
+                )}
               </div>
             ))}
             <p className="text-[#39d353]">└────────────────────────────────────────────────────────────┘</p>
